@@ -20,6 +20,10 @@ public class User {
 		
 	}
 	
+	public User() {
+		
+	}
+	
 	public void acceptTickets() {
 		
 	}
