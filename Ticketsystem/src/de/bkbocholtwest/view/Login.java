@@ -7,6 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
+import de.bkbocholtwest.model.App;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -74,11 +77,16 @@ public class Login {
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				App app = new App();
 				if(txtPassword.equals(/*liste mit gehashten passwort und Username, bestimmter index*/3) && txtUsername.equals(4/*List mit Username und Passwörtern, bestimmter index*/)) {
-					boolean login = true;
+					app.activeUser = true;
 				}
 				else {
-					//penalty 
+					//penalty
+					app.attemptCounter++;
+					if(app.attemptCounter >3) {
+						
+					}
 				}
 			}
 		});
