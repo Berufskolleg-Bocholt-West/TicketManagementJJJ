@@ -53,11 +53,11 @@ public class Login {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblUsername = new JLabel("Username");
-		lblUsername.setBounds(52, 58, 80, 21);
+		lblUsername.setBounds(52, 54, 92, 25);
 		frame.getContentPane().add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(52, 90, 80, 21);
+		lblPassword.setBounds(52, 90, 92, 21);
 		frame.getContentPane().add(lblPassword);
 		
 		
@@ -75,22 +75,22 @@ public class Login {
 			}
 		});
 		
-		btnRegister.setBounds(111, 172, 170, 23);
+		btnRegister.setBounds(154, 167, 170, 28);
 		frame.getContentPane().add(btnRegister);
 		
 		txtUsername = new JTextField();
-		txtUsername.setBounds(111, 58, 96, 20);
+		txtUsername.setBounds(154, 54, 170, 28);
 		frame.getContentPane().add(txtUsername);
 		txtUsername.setColumns(10);
 		
 		txtPassword = new JTextField();
-		txtPassword.setBounds(111, 90, 96, 20);
+		txtPassword.setBounds(154, 86, 170, 28);
 		frame.getContentPane().add(txtPassword);
 		txtPassword.setColumns(10);
 		
 		JLabel lblPassOrUserWrong = new JLabel("Password or Username is incorrect!");
 		lblPassOrUserWrong.setEnabled(false);
-		lblPassOrUserWrong.setBounds(111, 206, 240, 46);
+		lblPassOrUserWrong.setBounds(154, 206, 211, 46);
 		lblPassOrUserWrong.setVisible(false);
 		frame.getContentPane().add(lblPassOrUserWrong);
 		
@@ -110,7 +110,7 @@ public class Login {
 				}
 			}	
 		});
-		btnLogin.setBounds(111, 138, 170, 23);
+		btnLogin.setBounds(154, 125, 170, 28);
 		frame.getContentPane().add(btnLogin);
 		
 

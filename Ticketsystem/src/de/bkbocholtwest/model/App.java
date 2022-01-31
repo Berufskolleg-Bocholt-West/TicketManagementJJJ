@@ -11,7 +11,7 @@ public class App {
 	
 	public int[] penaltyArray = {1,5,15,60}; 
 	
-	public ArrayList<User> users = new ArrayList<User>();
+	public static ArrayList<User> users = new ArrayList<User>();
 	
 	
 			

@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import de.bkbocholtwest.model.Admin;
+import de.bkbocholtwest.model.App;
+
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -82,7 +86,15 @@ public class Register {
 		JButton btnRegister = new JButton("Register");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Nur Admin dürfen user erstellen
+				/* 
+				Hier soll die Methode aus Admin createTickets aufgerufen werden
+				Nur Admin dürfen user erstellen
+				
+				
+				Admin admin = new Admin();
+				admin.createTickets(txtUsername.getText(),txtPassword.getText());
+				*/
+
 				
 			}
 		});

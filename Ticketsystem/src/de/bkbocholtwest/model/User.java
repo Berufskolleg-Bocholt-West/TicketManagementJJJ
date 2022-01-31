@@ -9,7 +9,7 @@ public class User {
 	private String username;
 	private boolean locked;
 	private String password;
-	private boolean admin;
+	public boolean admin;
 	private Department department;
 	
 	private ArrayList<Ticket> createdTickets = new ArrayList<Ticket>();

@@ -6,7 +6,9 @@ public class Admin extends User{
 		super(username, password, department);
 	}
 	
-	public void createUser() {
+	public void createUser(String username, String password) {
+		//Hier wird der neue User in die Liste angefügt
+		//App.users.add(username, password, new Department()));
 		
 	}
 	
