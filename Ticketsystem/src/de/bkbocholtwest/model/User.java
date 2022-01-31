@@ -16,10 +16,14 @@ public class User {
 	private ArrayList<Ticket> pendingTickets = new ArrayList<Ticket>();
 	
 	
-	public User(String username, int password, Department department) {
-		
+
+	public User(String username, String password, Department department) {
+
+		this.username = username;
+		this.password = password;
+		this.department = department;
 	}
-	
+
 	public int getUserID() {
 		return userID;
 	}

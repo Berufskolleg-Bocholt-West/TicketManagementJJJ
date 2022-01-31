@@ -22,7 +22,7 @@ public class App {
 	}
 	
 	public boolean login(String username, String password) {
-		users.add(new User("Johannes",111, new Department()));
+		users.add(new User("Johannes","111", new Department()));
 		
 		for (User u : users) {
 			if(u.getUsername().equals(username) && u.getPassword().equals(password)) {

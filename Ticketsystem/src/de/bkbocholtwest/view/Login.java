@@ -84,6 +84,7 @@ public class Login {
 		JLabel lblPassOrUserWrong = new JLabel("Password or Username is incorrect!");
 		lblPassOrUserWrong.setEnabled(false);
 		lblPassOrUserWrong.setBounds(111, 206, 240, 46);
+		lblPassOrUserWrong.setVisible(false);
 		frame.getContentPane().add(lblPassOrUserWrong);
 		
 		
@@ -96,6 +97,7 @@ public class Login {
 					//success login username and pass are correct
 				}else {
 					lblPassOrUserWrong.setEnabled(true);
+					lblPassOrUserWrong.setVisible(true);
 				}
 			}	
 		});
