@@ -28,6 +28,7 @@ public class App {
 			if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
 				activeUser = u;
 				return true;
+				
 			}
 			
 		}

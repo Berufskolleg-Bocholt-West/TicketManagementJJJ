@@ -95,6 +95,8 @@ public class Login {
 				boolean successLog = app.login(txtUsername.getText(),txtPassword.getText());
 				if (successLog) {
 					//success login username and pass are correct
+					lblPassOrUserWrong.setEnabled(false);
+					lblPassOrUserWrong.setVisible(false);
 				}else {
 					lblPassOrUserWrong.setEnabled(true);
 					lblPassOrUserWrong.setVisible(true);
