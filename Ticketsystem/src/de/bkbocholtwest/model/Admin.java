@@ -5,5 +5,13 @@ public class Admin extends User{
 	public Admin(String username, String password, Department department) {
 		super(username, password, department);
 	}
+	
+	public void createUser() {
+		
+	}
+	
+	public void deleteUser() {
+		
+	}
 
 }

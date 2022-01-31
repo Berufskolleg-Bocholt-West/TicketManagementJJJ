@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 
 public class Login {
 
-	private JFrame frame;
+	public JFrame frame;
 	private JTextField txtUsername;
 	private JTextField txtPassword;
 	App app = new App();
@@ -61,15 +61,22 @@ public class Login {
 		frame.getContentPane().add(lblPassword);
 		
 		
-		JButton btnNewButton_1 = new JButton("I dont have an Account");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnRegister = new JButton("I dont have an Account");
+		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				//hier noch überprüfen ob der User ein Admin ist.
 				Register reg = new Register();
+				reg.frame.setVisible(true);
+				frame.setVisible(false);
+				
+				
+				
 			}
 		});
 		
-		btnNewButton_1.setBounds(111, 172, 170, 23);
-		frame.getContentPane().add(btnNewButton_1);
+		btnRegister.setBounds(111, 172, 170, 23);
+		frame.getContentPane().add(btnRegister);
 		
 		txtUsername = new JTextField();
 		txtUsername.setBounds(111, 58, 96, 20);
@@ -88,8 +95,8 @@ public class Login {
 		frame.getContentPane().add(lblPassOrUserWrong);
 		
 		
-		JButton btnNewButton = new JButton("Login");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				boolean successLog = app.login(txtUsername.getText(),txtPassword.getText());
@@ -103,8 +110,8 @@ public class Login {
 				}
 			}	
 		});
-		btnNewButton.setBounds(111, 138, 170, 23);
-		frame.getContentPane().add(btnNewButton);
+		btnLogin.setBounds(111, 138, 170, 23);
+		frame.getContentPane().add(btnLogin);
 		
 
 		

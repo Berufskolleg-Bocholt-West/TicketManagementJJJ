@@ -27,6 +27,7 @@ public class App {
 		for (User u : users) {
 			if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
 				activeUser = u;
+				System.out.println(activeUser);
 				return true;
 				
 			}
