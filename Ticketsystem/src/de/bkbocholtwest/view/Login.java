@@ -18,6 +18,7 @@ public class Login {
 	private JFrame frame;
 	private JTextField txtUsername;
 	private JTextField txtPassword;
+	App app = new App();
 
 	/**
 	 * Launch the application.
@@ -60,7 +61,13 @@ public class Login {
 		frame.getContentPane().add(lblPassword);
 		
 		
-		JButton btnNewButton_1 = new JButton("I already have an Account!");
+		JButton btnNewButton_1 = new JButton("I dont have an Account");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Register reg = new Register();
+			}
+		});
+		
 		btnNewButton_1.setBounds(111, 172, 170, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
@@ -74,24 +81,29 @@ public class Login {
 		frame.getContentPane().add(txtPassword);
 		txtPassword.setColumns(10);
 		
+		JLabel lblPassOrUserWrong = new JLabel("Password or Username is incorrect!");
+		lblPassOrUserWrong.setEnabled(false);
+		lblPassOrUserWrong.setBounds(111, 206, 240, 46);
+		frame.getContentPane().add(lblPassOrUserWrong);
+		
+		
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				App app = new App();
-				if(txtPassword.equals(/*liste mit gehashten passwort und Username, bestimmter index*/3) && txtUsername.equals(4/*List mit Username und Passwörtern, bestimmter index*/)) {
-					app.activeUser = true;
+
+				boolean successLog = app.login(txtUsername.getText(),txtPassword.getText());
+				if (successLog) {
+					//success login username and pass are correct
+				}else {
+					lblPassOrUserWrong.setEnabled(true);
 				}
-				else {
-					//penalty
-					app.attemptCounter++;
-					if(app.attemptCounter >3) {
-						
-					}
-				}
-			}
+			}	
 		});
 		btnNewButton.setBounds(111, 138, 170, 23);
 		frame.getContentPane().add(btnNewButton);
+		
+
+		
 		
 	}
 }

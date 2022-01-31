@@ -13,6 +13,7 @@ public class App {
 	
 	public ArrayList<User> users = new ArrayList<User>();
 	
+	
 			
 			
 	public static void main(String[] args) {
@@ -20,8 +21,17 @@ public class App {
 
 	}
 	
-	public void login() {
-		Login log = new Login();
+	public boolean login(String username, String password) {
+		users.add(new User("Johannes",111, new Department()));
+		
+		for (User u : users) {
+			if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
+				activeUser = u;
+				return true;
+			}
+			
+		}
+		return false;
 	}
 	
 	public void lockDeviceFor(int lockTime) {
