@@ -1,11 +1,11 @@
 package de.bkbocholtwest.model;
 
+import java.util.UUID;
 import java.util.ArrayList;
 
 public class User {
 
-	
-	private int userID;
+	private String userID;
 	private String username;
 	private boolean locked;
 	private String password;
@@ -15,13 +15,17 @@ public class User {
 	private ArrayList<Ticket> createdTickets = new ArrayList<Ticket>();
 	private ArrayList<Ticket> pendingTickets = new ArrayList<Ticket>();
 	
-	
+	public String generateUserID() {
+		String userID = UUID.randomUUID().toString();
+		return userID;
+	}
 
-	public User(String username, String password, Department department) {
+	public User(String username, String password, Department department, String userID) {
 
 		this.username = username;
 		this.password = password;
 		this.department = department;
+		this.userID = generateUserID();
 	}
 
 	public String toString() {
@@ -30,11 +34,11 @@ public class User {
 		return "UserID: "+userID+" Username: "+username;
 	}
 	
-	public int getUserID() {
+	public String getUserID() {
 		return userID;
 	}
 
-	public void setUserID(int userID) {
+	public void setUserID(String userID) {
 		this.userID = userID;
 	}
 

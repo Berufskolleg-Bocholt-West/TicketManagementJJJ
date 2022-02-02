@@ -19,10 +19,13 @@ public class App {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+
 	}
 	
 	public boolean login(String username, String password) {
-		users.add(new User("Johannes","111", new Department()));
+		//User user = new User();
+		users.add(new User("Johannes","111", new Department(), null));
+		users.add(new User("Julian","111", new Department(), null));
 		
 		for (User u : users) {
 			if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
