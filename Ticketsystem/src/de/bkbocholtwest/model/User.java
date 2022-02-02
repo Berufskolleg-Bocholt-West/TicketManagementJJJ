@@ -24,6 +24,12 @@ public class User {
 		this.department = department;
 	}
 
+	public String toString() {
+		
+		
+		return "UserID: "+userID+" Username: "+username;
+	}
+	
 	public int getUserID() {
 		return userID;
 	}
