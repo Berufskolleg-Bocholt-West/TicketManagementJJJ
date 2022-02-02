@@ -18,23 +18,21 @@ public class App {
 			
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-
+		
 	}
 	
 	public boolean login(String username, String password) {
-		//User user = new User();
-		users.add(new User("Johannes","111", new Department(), null));
-		users.add(new User("Julian","111", new Department(), null));
-		
+		Admin admin = new Admin();
+		//hier lesen welche User es schon gibt
+		admin.createUser("Johannes", "111");
+		admin.createUser("Julian", "111");
+
 		for (User u : users) {
 			if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
 				activeUser = u;
 				System.out.println(activeUser);
-				return true;
-				
+				return true;	
 			}
-			
 		}
 		return false;
 	}

@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import de.bkbocholtwest.model.Admin;
 import de.bkbocholtwest.model.App;
 
 import java.awt.event.ActionListener;

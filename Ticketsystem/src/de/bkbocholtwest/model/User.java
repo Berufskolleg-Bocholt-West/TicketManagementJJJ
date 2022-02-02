@@ -29,18 +29,15 @@ public class User {
 	}
 
 	public String toString() {
-		
-		
+			
 		return "UserID: "+userID+" Username: "+username;
 	}
 	
-	public String getUserID() {
-		return userID;
-	}
-
-	public void setUserID(String userID) {
-		this.userID = userID;
-	}
+	/*
+	 * public String getUserID() { return userID; }
+	 * 
+	 * public void setUserID(String userID) { this.userID = userID; }
+	 */
 
 	public String getUsername() {
 		return username;
