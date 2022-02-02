@@ -113,6 +113,10 @@ public class Login {
 		btnLogin.setBounds(154, 125, 170, 28);
 		frame.getContentPane().add(btnLogin);
 		
+		JButton btnHallo = new JButton("New button");
+		btnHallo.setBounds(27, 229, 89, 23);
+		frame.getContentPane().add(btnHallo);
+		
 
 		
 		
