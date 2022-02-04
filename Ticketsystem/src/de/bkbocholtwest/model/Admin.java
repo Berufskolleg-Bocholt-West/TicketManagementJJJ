@@ -8,7 +8,7 @@ public class Admin extends User{
 	
 	public void createUser(String username, String password) {
 	
-		App.users.add(new User(username, password, new Department(), null));
+		App.users.add(new User(username, App.generateHash(password), new Department(), null));
 		
 	}
 	

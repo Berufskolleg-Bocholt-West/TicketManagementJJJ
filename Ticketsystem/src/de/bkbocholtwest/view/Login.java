@@ -13,13 +13,14 @@ import de.bkbocholtwest.model.App;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class Login {
 
 	public JFrame frame;
 	private JTextField txtUsername;
-	private JTextField txtPassword;
 	App app = new App();
+	private JPasswordField txtpasswordField;
 
 	/**
 	 * Launch the application.
@@ -84,11 +85,6 @@ public class Login {
 		frame.getContentPane().add(txtUsername);
 		txtUsername.setColumns(10);
 		
-		txtPassword = new JTextField();
-		txtPassword.setBounds(154, 86, 170, 28);
-		frame.getContentPane().add(txtPassword);
-		txtPassword.setColumns(10);
-		
 		JLabel lblPassOrUserWrong = new JLabel("Password or Username is incorrect!");
 		lblPassOrUserWrong.setEnabled(false);
 		lblPassOrUserWrong.setBounds(154, 206, 211, 46);
@@ -100,7 +96,7 @@ public class Login {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				boolean successLog = app.login(txtUsername.getText(),txtPassword.getText());
+				boolean successLog = app.login(txtUsername.getText(), txtpasswordField.getText());
 				if (successLog) {
 					//success login username and pass are correct
 					lblPassOrUserWrong.setEnabled(false);
@@ -113,6 +109,10 @@ public class Login {
 		});
 		btnLogin.setBounds(154, 125, 170, 28);
 		frame.getContentPane().add(btnLogin);
+		
+		txtpasswordField = new JPasswordField();
+		txtpasswordField.setBounds(154, 86, 170, 28);
+		frame.getContentPane().add(txtpasswordField);
 		
 
 		

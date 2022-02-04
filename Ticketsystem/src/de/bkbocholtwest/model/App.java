@@ -1,5 +1,10 @@
 package de.bkbocholtwest.model;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import de.bkbocholtwest.view.Login;
 public class App {
@@ -12,13 +17,30 @@ public class App {
 	public int[] penaltyArray = {1,5,15,60}; 
 	
 	public static ArrayList<User> users = new ArrayList<User>();
-	
-	
 			
 			
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+
+	}
+	
+	
+	public static String generateHash(String password) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("SHA-1");
+			md.update(password.getBytes());
+			byte byteData[] = md.digest();
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < byteData.length; i++) {
+				sb.append(Integer.toString(
+						(byteData[i] & 0xff) + 0x100, 16).substring(1));
+			}
+			
+			return sb.toString();
+			
+		} catch (NoSuchAlgorithmException ex) {
+			Logger.getLogger("SHA-1").log(Level.SEVERE, null, ex);
+			return null;
+		}
 	}
 	
 	public boolean login(String username, String password) {
@@ -28,7 +50,7 @@ public class App {
 		admin.createUser("Julian", "111");
 
 		for (User u : users) {
-			if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
+			if(u.getUsername().equals(username) && u.getPassword().equals(generateHash(password))) {
 				activeUser = u;
 				System.out.println(activeUser);
 				return true;	
