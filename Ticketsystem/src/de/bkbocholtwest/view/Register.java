@@ -13,12 +13,13 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class Register {
 
 	public JFrame frame;
 	private JTextField txtUsername;
-	private JTextField txtPassword;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -65,11 +66,6 @@ public class Register {
 		lblPassword.setBounds(25, 87, 113, 28);
 		frame.getContentPane().add(lblPassword);
 		
-		txtPassword = new JTextField();
-		txtPassword.setBounds(148, 84, 218, 31);
-		frame.getContentPane().add(txtPassword);
-		txtPassword.setColumns(10);
-		
 		JButton btnLogin = new JButton("I already have an Account");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -89,16 +85,19 @@ public class Register {
 				/* 
 				Hier soll die Methode aus Admin createTickets aufgerufen werden
 				Nur Admin dürfen user erstellen
-				
-				
-				Admin admin = new Admin();
-				admin.createTickets(txtUsername.getText(),txtPassword.getText());
 				*/
+				
+				Admin ad = new Admin();
+				ad.createUser(txtUsername.getText(), passwordField.getText());
 
 				
 			}
 		});
 		btnRegister.setBounds(148, 137, 218, 23);
 		frame.getContentPane().add(btnRegister);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(148, 87, 218, 28);
+		frame.getContentPane().add(passwordField);
 	}
 }
