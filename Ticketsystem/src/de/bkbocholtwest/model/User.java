@@ -20,7 +20,7 @@ public class User {
 		return userID;
 	}
 
-	public User(String username, String password, Department department, String userID) {
+	public User(String username, String password, Department department) {
 
 		this.username = username;
 		this.password = password;

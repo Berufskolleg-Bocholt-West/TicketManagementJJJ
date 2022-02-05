@@ -17,9 +17,13 @@ public class App {
 	public int[] penaltyArray = {1,5,15,60}; 
 	
 	public static ArrayList<User> users = new ArrayList<User>();
-			
+	
+	public App(){
+		//hier lesen welche user es gibt aus der datenbank
+	}
 			
 	public static void main(String[] args) {
+
 
 	}
 	
@@ -46,6 +50,7 @@ public class App {
 	public boolean login(String username, String password) {
 		Admin admin = new Admin();
 		//hier lesen welche User es schon gibt
+		
 		admin.createUser("Johannes", "111");
 		admin.createUser("Julian", "111");
 
