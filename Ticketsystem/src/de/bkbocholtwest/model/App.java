@@ -18,7 +18,7 @@ public class App {
 	public int lockCounter;
 	public int attemptCounter;
 	
-	public int[] penaltyArray = {1,5,15,60}; 
+	public static int[] penaltyArray = {1,5,15,60}; 
 	
 	public static ArrayList<User> users = new ArrayList<User>();
 	
@@ -91,16 +91,24 @@ public class App {
 			if(u.getUsername().equals(username) && u.getPassword().equals(generateHash(password))) {
 				activeUser = u;
 				System.out.println(activeUser);
-				return true;	
+				lockCounter = 0;
+				attemptCounter = 0;
+				return true;
+				
 			}
+		}
+		attemptCounter++;
+		if(attemptCounter == 3) {
+			attemptCounter = 0;
+			lockCounter++;
+			penalty(lockCounter);
 		}
 		return false;
 	}
 	
-	public void lockDeviceFor(int lockTime) {
-		/*Hier an die Class Login übergeben um damit weiterzuarbeiten.
-		 * penaltyArray[lockTime]
-		 */
+	public static int penalty(int lockCounter) {
+		int penaltyTime = penaltyArray[lockCounter];
+		return penaltyTime;
 	}
 
 }
