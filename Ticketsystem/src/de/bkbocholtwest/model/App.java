@@ -1,15 +1,19 @@
 package de.bkbocholtwest.model;
 import java.security.MessageDigest;
+
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import java.sql.*;
+
+import de.bkbocholtwest.controller.DBConnection;
 import de.bkbocholtwest.view.Login;
 public class App {
 
-	
+	public Connection con;
 	public static User activeUser;
 	public int lockCounter;
 	public int attemptCounter;
@@ -23,7 +27,36 @@ public class App {
 	}
 			
 	public static void main(String[] args) {
-
+		DBConnection conn = new DBConnection();
+		App prg = new App();
+		conn.connect();
+		prg.con=conn.getCon();
+		
+		Statement stm = null;
+		try {
+			stm = prg.con.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ResultSet rs = null;
+		try {
+			rs = stm.executeQuery("SELECT * FROM Benutzer;");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			while(rs.next()){
+				System.out.println(rs.getString(1) + " " +
+				                   rs.getString(2) + " " +
+				                   rs.getString(3) + " " +
+				                   rs.getString(4));
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 	
