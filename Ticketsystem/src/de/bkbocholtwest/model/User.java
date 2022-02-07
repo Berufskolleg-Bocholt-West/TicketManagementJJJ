@@ -1,4 +1,4 @@
-package de.bkbocholtwest.model;
+	package de.bkbocholtwest.model;
 
 import java.util.UUID;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class User {
 		return userID;
 	}
 
-	public User(String username, String password, Department department) {
+	public User(String username, String password, Department department, String UserID) {
 
 		this.username = username;
 		this.password = password;

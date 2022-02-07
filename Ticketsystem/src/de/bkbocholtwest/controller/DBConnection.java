@@ -16,7 +16,7 @@ public class DBConnection {
 		try {
 			// Verbindung aufbauen
 			con = DriverManager.getConnection(url, user, pass);
-			System.out.println("Verbindung erfolgreich hergestellt");
+			//System.out.println("Verbindung erfolgreich hergestellt");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}

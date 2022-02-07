@@ -27,11 +27,14 @@ public class App {
 	}
 			
 	public static void main(String[] args) {
+		
+	}
+	
+	public void databaseToUsers() {
 		DBConnection conn = new DBConnection();
 		App prg = new App();
 		conn.connect();
 		prg.con=conn.getCon();
-		
 		Statement stm = null;
 		try {
 			stm = prg.con.createStatement();
@@ -41,17 +44,16 @@ public class App {
 		}
 		ResultSet rs = null;
 		try {
-			rs = stm.executeQuery("SELECT * FROM Benutzer;");
+			rs = stm.executeQuery("SELECT * FROM User;");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			while(rs.next()){
-				System.out.println(rs.getString(1) + " " +
-				                   rs.getString(2) + " " +
-				                   rs.getString(3) + " " +
-				                   rs.getString(4));
+
+				users.add(new User(rs.getString(1), rs.getString(2), null, rs.getString(5)));
+				//System.out.println(users);
 				}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -59,8 +61,6 @@ public class App {
 		}
 
 	}
-	
-	
 	public static String generateHash(String password) {
 		try {
 			MessageDigest md = MessageDigest.getInstance("SHA-1");
@@ -81,11 +81,12 @@ public class App {
 	}
 	
 	public boolean login(String username, String password) {
+		databaseToUsers();
 		Admin admin = new Admin();
 		//hier lesen welche User es schon gibt
 		
-		admin.createUser("Johannes", "111");
-		admin.createUser("Julian", "111");
+		//admin.createUser("Johannes", "111");
+		//admin.createUser("Julian", "111");
 
 		for (User u : users) {
 			if(u.getUsername().equals(username) && u.getPassword().equals(generateHash(password))) {

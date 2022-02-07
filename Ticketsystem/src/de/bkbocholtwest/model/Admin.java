@@ -8,7 +8,7 @@ public class Admin extends User{
 	
 	public void createUser(String username, String password) {
 	
-		App.users.add(new User(username, App.generateHash(password), new Department()));
+		App.users.add(new User(username, App.generateHash(password), new Department(), generateUserID()));
 		//hier user in datanbank schreiben
 		//gespeicherte dinge: username, gehashtes pass, department, userid
 	}
