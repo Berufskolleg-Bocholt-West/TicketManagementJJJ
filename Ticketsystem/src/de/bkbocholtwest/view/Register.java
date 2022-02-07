@@ -49,7 +49,7 @@ public class Register {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 450, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -88,6 +88,7 @@ public class Register {
 				*/
 				
 				Admin ad = new Admin();
+				
 				ad.createUser(txtUsername.getText(), passwordField.getText());
 
 				

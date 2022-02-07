@@ -50,7 +50,7 @@ public class Login {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 391);
+		frame.setBounds(100, 100, 450, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -77,17 +77,17 @@ public class Login {
 			}
 		});
 		
-		btnRegister.setBounds(154, 167, 170, 28);
+		btnRegister.setBounds(154, 167, 220, 28);
 		frame.getContentPane().add(btnRegister);
 		
 		txtUsername = new JTextField();
-		txtUsername.setBounds(154, 54, 170, 28);
+		txtUsername.setBounds(154, 54, 220, 28);
 		frame.getContentPane().add(txtUsername);
 		txtUsername.setColumns(10);
 		
 		JLabel lblPassOrUserWrong = new JLabel("Password or Username is incorrect!");
 		lblPassOrUserWrong.setEnabled(false);
-		lblPassOrUserWrong.setBounds(154, 206, 211, 46);
+		lblPassOrUserWrong.setBounds(154, 206, 220, 46);
 		lblPassOrUserWrong.setVisible(false);
 		frame.getContentPane().add(lblPassOrUserWrong);
 		
@@ -108,20 +108,20 @@ public class Login {
 				}
 			}	
 		});
-		btnLogin.setBounds(154, 125, 170, 28);
+		btnLogin.setBounds(154, 125, 220, 28);
 		frame.getContentPane().add(btnLogin);
 		
 		txtpasswordField = new JPasswordField();
-		txtpasswordField.setBounds(154, 86, 170, 28);
+		txtpasswordField.setBounds(154, 86, 220, 28);
 		frame.getContentPane().add(txtpasswordField);
 		
 		JLabel lblAttemptsCounter = new JLabel("You have ... attempts left.");
-		lblAttemptsCounter.setBounds(154, 249, 211, 37);
+		lblAttemptsCounter.setBounds(154, 249, 220, 37);
 		lblAttemptsCounter.setVisible(false);
 		frame.getContentPane().add(lblAttemptsCounter);
 		
 		JLabel lblDeviceLock = new JLabel("Your Device is locked for ... sec.");
-		lblDeviceLock.setBounds(154, 11, 170, 32);
+		lblDeviceLock.setBounds(154, 11, 220, 32);
 		lblDeviceLock.setVisible(false);
 		frame.getContentPane().add(lblDeviceLock);
 		
