@@ -50,7 +50,7 @@ public class Login {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 450, 391);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -114,6 +114,16 @@ public class Login {
 		txtpasswordField = new JPasswordField();
 		txtpasswordField.setBounds(154, 86, 170, 28);
 		frame.getContentPane().add(txtpasswordField);
+		
+		JLabel lblAttemptsCounter = new JLabel("You have ... attempts left.");
+		lblAttemptsCounter.setBounds(154, 249, 211, 37);
+		lblAttemptsCounter.setVisible(false);
+		frame.getContentPane().add(lblAttemptsCounter);
+		
+		JLabel lblDeviceLock = new JLabel("Your Device is locked for ... sec.");
+		lblDeviceLock.setBounds(154, 11, 170, 32);
+		lblDeviceLock.setVisible(false);
+		frame.getContentPane().add(lblDeviceLock);
 		
 
 		
