@@ -101,6 +101,7 @@ public class Login {
 					//success login username and pass are correct
 					lblPassOrUserWrong.setEnabled(false);
 					lblPassOrUserWrong.setVisible(false);
+					//hier wird das nächste gui aufgerufen
 				}else {
 					lblPassOrUserWrong.setEnabled(true);
 					lblPassOrUserWrong.setVisible(true);
