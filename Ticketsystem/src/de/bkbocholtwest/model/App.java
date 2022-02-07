@@ -18,7 +18,7 @@ public class App {
 	public int lockCounter;
 	public int attemptCounter;
 	
-	public static int[] penaltyArray = {1,5,15,60}; 
+	public static int[] penaltyArray = {0,1,5,15,60}; 
 	
 	public static ArrayList<User> users = new ArrayList<User>();
 	
