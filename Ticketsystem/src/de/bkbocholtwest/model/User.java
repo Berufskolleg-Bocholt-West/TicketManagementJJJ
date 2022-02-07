@@ -33,12 +33,6 @@ public class User {
 		return "UserID: "+userID+" Username: "+username +" Password: " +password;
 	}
 	
-	/*
-	 * public String getUserID() { return userID; }
-	 * 
-	 * public void setUserID(String userID) { this.userID = userID; }
-	 */
-
 	public String getUsername() {
 		return username;
 	}

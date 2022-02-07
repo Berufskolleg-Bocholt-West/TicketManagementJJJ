@@ -7,10 +7,9 @@ public class Admin extends User{
 	}
 	
 	public void createUser(String username, String password) {
-	
-		App.users.add(new User(username, App.generateHash(password), new Department(), generateUserID()));
-		//hier user in datanbank schreiben
-		//gespeicherte dinge: username, gehashtes pass, department, userid
+		
+		App.writeUsersToDatabase(username, App.generateHash(password), new Department().getName(), generateUserID());
+
 	}
 	
 	public void deleteUser(User u) {
