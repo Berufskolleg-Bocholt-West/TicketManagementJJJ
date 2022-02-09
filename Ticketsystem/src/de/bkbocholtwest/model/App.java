@@ -7,6 +7,18 @@ import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import java.time.*;
+
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
+
 import java.sql.*;
 
 import de.bkbocholtwest.controller.DBConnection;
@@ -20,7 +32,14 @@ public class App {
 	public int lockCounter;
 	public int attemptCounter;
 	
-	public static int[] penaltyArray = {0,1,5,15,60}; 
+	public int[] penaltyArray = {0,1,5,15,60}; 
+	
+	public Date now;
+	public Date unlockTime;
+	
+	File dataFile = new File("/TicketManegmentJJJ/Ticketsystem/src/de/bkbocholtwest/controller/Unlocktimer.txt");;
+    BufferedReader br;
+    String lineInput;
 	
 	public static ArrayList<User> users = new ArrayList<User>();
 	
@@ -73,8 +92,11 @@ public class App {
 		return false;
 	}
 	
-	public static int penalty(int lockCounter) {
+	public int penalty(int lockCounter) {
 		int penaltyTime = penaltyArray[lockCounter];
+		now = new Date();
+		unlockTime = new Date();
+		unlockTime.setMinutes(unlockTime.getMinutes()+penaltyTime);
 		return penaltyTime;
 	}
 
