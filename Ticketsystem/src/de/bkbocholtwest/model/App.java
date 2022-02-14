@@ -37,7 +37,7 @@ public class App {
 	public Date now;
 	public Date unlockTime;
 	
-	File dataFile = new File("/TicketManegmentJJJ/Ticketsystem/src/de/bkbocholtwest/controller/Unlocktimer.txt");;
+	File dataFile = new File("/TicketManegmentJJJ/Ticketsystem/src/de/bkbocholtwest/controller/Unlocktimer.txt");
     BufferedReader br;
     String lineInput;
 	
@@ -97,7 +97,12 @@ public class App {
 		now = new Date();
 		unlockTime = new Date();
 		unlockTime.setMinutes(unlockTime.getMinutes()+penaltyTime);
+		System.out.println(unlockTime);
 		return penaltyTime;
+	}
+	
+	public void writer() {
+		
 	}
 
 }
