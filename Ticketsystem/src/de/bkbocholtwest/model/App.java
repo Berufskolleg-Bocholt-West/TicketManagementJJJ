@@ -10,6 +10,8 @@ import java.util.logging.Logger;
 import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,9 +39,12 @@ public class App {
 	public Date now;
 	public Date unlockTime;
 	
-	File dataFile = new File("/TicketManegmentJJJ/Ticketsystem/src/de/bkbocholtwest/controller/Unlocktimer.txt");
+	File dataFile = new File("Ticketsystem/src/de/bkbocholtwest/controller/Unlocktimer.txt");
     BufferedReader br;
+    BufferedWriter bw;
     String lineInput;
+    
+    SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 	
 	public static ArrayList<User> users = new ArrayList<User>();
 	
@@ -48,7 +53,7 @@ public class App {
 	}
 			
 	public static void main(String[] args) {
-		
+		new App().path(new File("Ticketsystem/src/de/bkbocholtwest/controller/Unlocktimer.txt"));
 	}
 	
 		
@@ -98,11 +103,29 @@ public class App {
 		unlockTime = new Date();
 		unlockTime.setMinutes(unlockTime.getMinutes()+penaltyTime);
 		System.out.println(unlockTime);
+		String time = df.format(unlockTime);
+		writer(dataFile, time);
 		return penaltyTime;
 	}
 	
-	public void writer() {
-		
+	public void writer(File file, String text) {
+		 try {
+			 	
+			 
+	            bw = new BufferedWriter(new FileWriter(file));
+
+	            bw.write(text);          
+
+	            bw.close();
+
+	        } catch (IOException ioe) {
+
+	            System.out.println("\n An error with the Data.txt file occured.");
+	        }
+	}
+	
+	public void path(File myObj) {
+		System.out.println("Absolute path: " + myObj.getAbsolutePath());
 	}
 
 }
