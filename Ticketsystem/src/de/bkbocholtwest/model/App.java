@@ -39,7 +39,9 @@ public class App {
 	public Date now;
 	public Date unlockTime;
 	
-	File dataFile = new File("Ticketsystem/src/de/bkbocholtwest/controller/Unlocktimer.txt");
+	String lockPathStr = "src/de/bkbocholtwest/controller/Unlocktimer.txt";
+	
+	File dataFile = new File(lockPathStr);
     BufferedReader br;
     BufferedWriter bw;
     String lineInput;
@@ -49,11 +51,11 @@ public class App {
 	public static ArrayList<User> users = new ArrayList<User>();
 	
 	public App(){
-		
+		pathCheck();
 	}
 			
 	public static void main(String[] args) {
-		new App().path(new File("Ticketsystem/src/de/bkbocholtwest/controller/Unlocktimer.txt"));
+		
 	}
 	
 		
@@ -124,8 +126,15 @@ public class App {
 	        }
 	}
 	
-	public void path(File myObj) {
-		System.out.println("Absolute path: " + myObj.getAbsolutePath());
+	public void pathCheck() {
+		dataFile=path(dataFile, lockPathStr);
+	}
+	
+	public File path(File myObj, String pathStr) {
+		if(!myObj.exists()) {
+			myObj = new File("Ticketsystem/" +pathStr);
+		}
+		return myObj;
 	}
 
 }
