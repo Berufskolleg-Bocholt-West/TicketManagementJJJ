@@ -6,12 +6,9 @@ import javax.swing.JFrame;
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
+
 import javax.swing.JLabel;
-import net.miginfocom.swing.MigLayout;
+
 import javax.swing.BoxLayout;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
