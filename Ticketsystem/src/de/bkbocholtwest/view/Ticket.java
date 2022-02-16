@@ -28,10 +28,17 @@ import java.awt.event.MouseEvent;
 import java.awt.Panel;
 import java.awt.Font;
 import java.awt.ScrollPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.BevelBorder;
+import java.awt.Color;
 
 public class Ticket {
 
 	private JFrame frame;
+	private JTextField txtWriteAComment;
+	private JTextField txtWriteATitle;
+	private JTextField txtDescription;
 
 	/**
 	 * Launch the application.
@@ -61,54 +68,111 @@ public class Ticket {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 507, 519);
+		frame.setBounds(100, 100, 507, 678);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(20, 22, 417, 22);
-		frame.getContentPane().add(menuBar);
 		
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(466, 22, 17, 409);
 		frame.getContentPane().add(scrollBar);
 		
-		Panel panel = new Panel();
-		panel.setBounds(20, 50, 417, 39);
-		frame.getContentPane().add(panel);
+		JPanel panelCommentSection = new JPanel();
+		panelCommentSection.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
+		panelCommentSection.setBounds(20, 435, 448, 193);
+		frame.getContentPane().add(panelCommentSection);
+		panelCommentSection.setLayout(null);
 		
-		JLabel lblTitle = new JLabel("Title");
-		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 25));
-		panel.add(lblTitle);
+		txtWriteAComment = new JTextField();
+		txtWriteAComment.setText("Write a comment...");
+		txtWriteAComment.setBounds(10, 11, 428, 51);
+		panelCommentSection.add(txtWriteAComment);
+		txtWriteAComment.setColumns(10);
 		
-		Panel panel_1 = new Panel();
-		panel_1.setBounds(20, 103, 288, 369);
-		frame.getContentPane().add(panel_1);
+		JScrollBar scrollBarCommentSection = new JScrollBar();
+		scrollBarCommentSection.setBounds(10, 66, 428, 116);
+		panelCommentSection.add(scrollBarCommentSection);
 		
-		JLabel lblDescription = new JLabel("Desscription");
-		lblDescription.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel_1.add(lblDescription);
+		JPanel panelTicketId = new JPanel();
+		panelTicketId.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
+		panelTicketId.setBounds(20, 10, 39, 39);
+		frame.getContentPane().add(panelTicketId);
 		
-		Panel panel_2 = new Panel();
-		panel_2.setBounds(314, 104, 124, 96);
-		frame.getContentPane().add(panel_2);
+		JLabel lblTicketID = new JLabel("Ticket-ID");
+		lblTicketID.setFont(new Font("Tahoma", Font.BOLD, 11));
+		panelTicketId.add(lblTicketID);
 		
-		JLabel lbleditor = new JLabel("editor");
-		panel_2.add(lbleditor);
+		JPanel PanelCreators = new JPanel();
+		PanelCreators.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
+		PanelCreators.setBounds(20, 55, 416, 50);
+		frame.getContentPane().add(PanelCreators);
+		PanelCreators.setLayout(null);
 		
-		Panel panel_3 = new Panel();
-		panel_3.setBounds(314, 205, 123, 153);
-		frame.getContentPane().add(panel_3);
+		JLabel lblNewLabel_1 = new JLabel("Created at date:");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_1.setBounds(10, 25, 108, 14);
+		PanelCreators.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("created from:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_2.setBounds(162, 25, 89, 14);
+		PanelCreators.add(lblNewLabel_2);
+		
+		JPanel panelDescription = new JPanel();
+		panelDescription.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
+		panelDescription.setBounds(20, 112, 287, 309);
+		frame.getContentPane().add(panelDescription);
+		panelDescription.setLayout(null);
+		
+		JLabel lblDescription = new JLabel("Description");
+		lblDescription.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblDescription.setBounds(119, 11, 64, 14);
+		panelDescription.add(lblDescription);
+		
+		txtDescription = new JTextField();
+		txtDescription.setText("Write a description...");
+		txtDescription.setBounds(10, 36, 267, 262);
+		panelDescription.add(txtDescription);
+		txtDescription.setColumns(10);
+		
+		JPanel titlePanel = new JPanel();
+		titlePanel.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
+		titlePanel.setBounds(66, 11, 371, 39);
+		frame.getContentPane().add(titlePanel);
+		titlePanel.setLayout(null);
+		
+		txtWriteATitle = new JTextField();
+		txtWriteATitle.setFont(new Font("Tahoma", Font.BOLD, 14));
+		txtWriteATitle.setBounds(10, 0, 351, 39);
+		titlePanel.add(txtWriteATitle);
+		txtWriteATitle.setText("Write a title...");
+		txtWriteATitle.setColumns(10);
+		
+		JPanel panelEditors = new JPanel();
+		panelEditors.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
+		panelEditors.setBounds(313, 112, 123, 90);
+		frame.getContentPane().add(panelEditors);
+		
+		JLabel lblEditors = new JLabel("editor/s");
+		lblEditors.setFont(new Font("Tahoma", Font.BOLD, 11));
+		panelEditors.add(lblEditors);
+		
+		JPanel panelStatus = new JPanel();
+		panelStatus.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
+		panelStatus.setBounds(313, 207, 123, 117);
+		frame.getContentPane().add(panelStatus);
 		
 		JLabel lblStatus = new JLabel("Status");
-		panel_3.add(lblStatus);
+		lblStatus.setFont(new Font("Tahoma", Font.BOLD, 11));
+		panelStatus.add(lblStatus);
 		
-		Panel panel_4 = new Panel();
-		panel_4.setBounds(314, 364, 124, 108);
-		frame.getContentPane().add(panel_4);
+		JPanel panelDeadline = new JPanel();
+		panelDeadline.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
+		panelDeadline.setBounds(313, 331, 123, 90);
+		frame.getContentPane().add(panelDeadline);
 		
 		JLabel lblDeadline = new JLabel("Deadline");
-		panel_4.add(lblDeadline);
+		lblDeadline.setFont(new Font("Tahoma", Font.BOLD, 11));
+		panelDeadline.add(lblDeadline);
 
 	}
 }
