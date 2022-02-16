@@ -126,6 +126,23 @@ public class App {
 	        }
 	}
 	
+	public void reader(File file) {
+		try {
+
+            br = new BufferedReader(new FileReader(file));
+
+            lineInput = br.readLine();
+
+            lineInput = br.readLine();         
+
+            br.close();
+
+        } catch (IOException ioe) {
+
+            System.out.println("\n An error with the Data.txt file occured.");
+        }
+	}
+	
 	public void pathCheck() {
 		dataFile=path(dataFile, lockPathStr);
 	}
