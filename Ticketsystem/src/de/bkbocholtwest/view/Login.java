@@ -69,8 +69,11 @@ public class Login {
 				
 				//hier noch überprüfen ob der User ein Admin ist.
 				Register reg = new Register();
-				reg.frame.setVisible(true);
+				
 				frame.setVisible(false);
+				frame.setContentPane(reg.frame.getContentPane());  
+				
+				frame.setVisible(true);
 				
 				
 				
