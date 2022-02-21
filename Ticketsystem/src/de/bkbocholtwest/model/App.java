@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -34,10 +35,12 @@ public class App {
 	public int lockCounter;
 	public int attemptCounter;
 	
+	public boolean isLocked;
+	
 	public int[] penaltyArray = {0,1,5,15,60}; 
 	
-	public Date now;
-	public Date unlockTime;
+	public Date readUnlockTime = new Date();
+	public Date writtenUnlockTime;
 	
 	String lockPathStr = "src/de/bkbocholtwest/controller/Unlocktimer.txt";
 	
@@ -52,6 +55,7 @@ public class App {
 	
 	public App(){
 		pathCheck();
+		checkPenalty();
 	}
 			
 	public static void main(String[] args) {
@@ -101,13 +105,29 @@ public class App {
 	
 	public int penalty(int lockCounter) {
 		int penaltyTime = penaltyArray[lockCounter];
-		now = new Date();
-		unlockTime = new Date();
-		unlockTime.setMinutes(unlockTime.getMinutes()+penaltyTime);
-		System.out.println(unlockTime);
-		String time = df.format(unlockTime);
+		writtenUnlockTime = new Date();
+		writtenUnlockTime.setMinutes(writtenUnlockTime.getMinutes()+penaltyTime);
+		String time = df.format(writtenUnlockTime);
 		writer(dataFile, time);
 		return penaltyTime;
+	}
+	
+	public void checkPenalty() {
+		try {
+			readUnlockTime= df.parse(reader(dataFile));
+		} catch (ParseException e) {
+			isLocked=false;
+			e.printStackTrace();
+			
+		}
+		
+		Date now = new Date();
+		
+		if(now.after(readUnlockTime)) {
+			isLocked=false;
+		}else if(readUnlockTime.after(now)) {
+			isLocked =true;
+		}
 	}
 	
 	public void writer(File file, String text) {
@@ -126,14 +146,14 @@ public class App {
 	        }
 	}
 	
-	public void reader(File file) {
+	public String reader(File file) {
+		
 		try {
 
             br = new BufferedReader(new FileReader(file));
 
             lineInput = br.readLine();
-
-            lineInput = br.readLine();         
+            
 
             br.close();
 
@@ -141,6 +161,8 @@ public class App {
 
             System.out.println("\n An error with the Data.txt file occured.");
         }
+		
+		return lineInput;
 	}
 	
 	public void pathCheck() {

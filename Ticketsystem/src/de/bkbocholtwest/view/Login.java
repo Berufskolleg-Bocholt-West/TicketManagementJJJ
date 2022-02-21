@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
-public class Login {
+public class Login extends mainView{
 
 	public JFrame frame;
 	private JTextField txtUsername;
@@ -68,13 +68,13 @@ public class Login {
 			public void actionPerformed(ActionEvent e) {
 				
 				//hier noch überprüfen ob der User ein Admin ist.
-				Register reg = new Register();
+				/*Register reg = new Register();
 				
-				frame.setVisible(false);
-				frame.setContentPane(reg.frame.getContentPane());  
+				getMainFrame().setVisible(false);
+				getMainFrame().setContentPane(reg.frame.getContentPane());  
 				
-				frame.setVisible(true);
-				
+				getMainFrame().setVisible(true);*/
+				goToRegister();
 				
 				
 			}

@@ -17,7 +17,7 @@ import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
-public class Register {
+public class Register extends mainView{
 
 	public JFrame frame;
 	private JTextField txtUsername;
@@ -71,9 +71,7 @@ public class Register {
 		JButton btnLogin = new JButton("I already have an Account");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Login log = new Login();
-				log.frame.setVisible(true);
-				frame.setVisible(false);
+				goToLogin();
 				
 				
 			}
