@@ -68,13 +68,10 @@ public class Login extends mainView{
 			public void actionPerformed(ActionEvent e) {
 				
 				//hier noch überprüfen ob der User ein Admin ist.
-				/*Register reg = new Register();
+				Register reg = new Register();
 				
-				getMainFrame().setVisible(false);
-				getMainFrame().setContentPane(reg.frame.getContentPane());  
 				
-				getMainFrame().setVisible(true);*/
-				goToRegister();
+				mainWindow.goToRegister();
 				
 				
 			}

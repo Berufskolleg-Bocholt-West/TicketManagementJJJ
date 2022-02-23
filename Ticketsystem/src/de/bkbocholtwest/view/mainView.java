@@ -11,16 +11,19 @@ import java.awt.event.ActionEvent;
 public class mainView {
 
 	private JFrame mainFrame;
+	private mainView win;
+	public static mainView mainWindow;
 	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+
 			public void run() {
 				try {
-					mainView window = new mainView();
-					window.mainFrame.setVisible(true);
+					mainWindow = new mainView();
+					mainWindow.mainFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,8 +50,8 @@ public class mainView {
 		JButton btnNewButton = new JButton("Start System");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 
-				goToLogin();
+				 goToLogin();
+				
 			}
 		});
 		btnNewButton.setBounds(166, 118, 95, 23);
@@ -75,6 +78,14 @@ public class mainView {
 		mainFrame.setContentPane(reg.frame.getContentPane());  
 		
 		mainFrame.setVisible(true);
+	}
+	
+	public void setMe(mainView window) {
+		win=window;
+	}
+	
+	public mainView getMe() {
+		return win;
 	}
 
 }

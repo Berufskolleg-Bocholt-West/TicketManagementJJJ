@@ -71,7 +71,7 @@ public class Register extends mainView{
 		JButton btnLogin = new JButton("I already have an Account");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				goToLogin();
+				mainWindow.goToLogin();
 				
 				
 			}
