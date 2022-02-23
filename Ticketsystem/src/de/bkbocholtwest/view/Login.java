@@ -19,7 +19,7 @@ public class Login extends mainView{
 
 	public JFrame frame;
 	private JTextField txtUsername;
-	App app = new App();
+	
 	private JPasswordField txtpasswordField;
 
 	/**
@@ -68,13 +68,10 @@ public class Login extends mainView{
 			public void actionPerformed(ActionEvent e) {
 				
 				//hier noch überprüfen ob der User ein Admin ist.
-				/*Register reg = new Register();
+				Register reg = new Register();
 				
-				getMainFrame().setVisible(false);
-				getMainFrame().setContentPane(reg.frame.getContentPane());  
 				
-				getMainFrame().setVisible(true);*/
-				goToRegister();
+				mainWindow.goToRegister();
 				
 				
 			}
@@ -99,7 +96,7 @@ public class Login extends mainView{
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				boolean successLog = app.login(txtUsername.getText(), txtpasswordField.getText());
+				boolean successLog = mainWindow.getPRG().login(txtUsername.getText(), txtpasswordField.getText());
 				if (successLog) {
 					//success login username and pass are correct
 					lblPassOrUserWrong.setEnabled(false);

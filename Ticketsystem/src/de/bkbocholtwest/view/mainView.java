@@ -3,6 +3,9 @@ package de.bkbocholtwest.view;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
+import de.bkbocholtwest.model.App;
+
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
@@ -12,15 +15,20 @@ public class mainView {
 
 	private JFrame mainFrame;
 	
+	public static mainView mainWindow;
+	
+	private App prg;
+	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+
 			public void run() {
 				try {
-					mainView window = new mainView();
-					window.mainFrame.setVisible(true);
+					mainWindow = new mainView();
+					mainWindow.mainFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -33,6 +41,11 @@ public class mainView {
 	 */
 	public mainView() {
 		initialize();
+		prg = new App();
+	}
+	
+	public App getPRG() {
+		return prg;
 	}
 
 	/**
@@ -47,8 +60,8 @@ public class mainView {
 		JButton btnNewButton = new JButton("Start System");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 
-				goToLogin();
+				 goToLogin();
+				
 			}
 		});
 		btnNewButton.setBounds(166, 118, 95, 23);
@@ -76,5 +89,7 @@ public class mainView {
 		
 		mainFrame.setVisible(true);
 	}
+	
+	
 
 }
