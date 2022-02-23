@@ -127,7 +127,7 @@ public class Ticket {
 		
 		JLabel lblDescription = new JLabel("Description");
 		lblDescription.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblDescription.setBounds(119, 11, 64, 14);
+		lblDescription.setBounds(107, 11, 64, 14);
 		panelDescription.add(lblDescription);
 		
 		txtDescription = new JTextField();
