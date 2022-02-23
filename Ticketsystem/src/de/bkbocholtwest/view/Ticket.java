@@ -32,6 +32,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import java.awt.Color;
+import javax.swing.JScrollPane;
 
 public class Ticket {
 
@@ -68,7 +69,7 @@ public class Ticket {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 507, 678);
+		frame.setBounds(100, 100, 508, 687);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -83,14 +84,15 @@ public class Ticket {
 		panelCommentSection.setLayout(null);
 		
 		txtWriteAComment = new JTextField();
-		txtWriteAComment.setText("Write a comment...");
 		txtWriteAComment.setBounds(10, 11, 428, 51);
+		txtWriteAComment.setText("Write a comment...");
 		panelCommentSection.add(txtWriteAComment);
 		txtWriteAComment.setColumns(10);
 		
-		JScrollBar scrollBarCommentSection = new JScrollBar();
-		scrollBarCommentSection.setBounds(10, 66, 428, 116);
-		panelCommentSection.add(scrollBarCommentSection);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), null, null, null));
+		scrollPane.setBounds(10, 183, 428, -113);
+		panelCommentSection.add(scrollPane);
 		
 		JPanel panelTicketId = new JPanel();
 		panelTicketId.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
@@ -151,8 +153,10 @@ public class Ticket {
 		panelEditors.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
 		panelEditors.setBounds(313, 112, 123, 90);
 		frame.getContentPane().add(panelEditors);
+		panelEditors.setLayout(null);
 		
 		JLabel lblEditors = new JLabel("editor/s");
+		lblEditors.setBounds(38, 7, 46, 14);
 		lblEditors.setFont(new Font("Tahoma", Font.BOLD, 11));
 		panelEditors.add(lblEditors);
 		
@@ -160,8 +164,10 @@ public class Ticket {
 		panelStatus.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
 		panelStatus.setBounds(313, 207, 123, 117);
 		frame.getContentPane().add(panelStatus);
+		panelStatus.setLayout(null);
 		
 		JLabel lblStatus = new JLabel("Status");
+		lblStatus.setBounds(43, 7, 37, 14);
 		lblStatus.setFont(new Font("Tahoma", Font.BOLD, 11));
 		panelStatus.add(lblStatus);
 		
@@ -169,8 +175,10 @@ public class Ticket {
 		panelDeadline.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
 		panelDeadline.setBounds(313, 331, 123, 90);
 		frame.getContentPane().add(panelDeadline);
+		panelDeadline.setLayout(null);
 		
 		JLabel lblDeadline = new JLabel("Deadline");
+		lblDeadline.setBounds(37, 7, 49, 14);
 		lblDeadline.setFont(new Font("Tahoma", Font.BOLD, 11));
 		panelDeadline.add(lblDeadline);
 
