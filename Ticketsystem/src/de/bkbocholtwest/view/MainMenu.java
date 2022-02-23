@@ -5,12 +5,21 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPopupMenu;
+
+import de.bkbocholtwest.model.CommentSection;
+import de.bkbocholtwest.model.TicketClass;
+import de.bkbocholtwest.model.User;
+
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Date;
 import java.awt.BorderLayout;
 import java.awt.List;
 import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainMenu {
 
@@ -49,6 +58,16 @@ public class MainMenu {
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
+		
+		JButton btnCreateTicket = new JButton("Ticket");
+		btnCreateTicket.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//mainView.goToCreateTicket();
+				
+				//Ticket ticket new Ticket(ticket.generateTicketID(), discription.getText(), ) create Object;
+			}
+		});
+		menuBar.add(btnCreateTicket);
 		frame.getContentPane().setLayout(null);
 	}
 

@@ -12,8 +12,8 @@ public class User {
 	public boolean admin;
 	private Department department;
 	
-	private ArrayList<Ticket> createdTickets = new ArrayList<Ticket>();
-	private ArrayList<Ticket> pendingTickets = new ArrayList<Ticket>();
+	private ArrayList<TicketClass> createdTickets = new ArrayList<TicketClass>();
+	private ArrayList<TicketClass> pendingTickets = new ArrayList<TicketClass>();
 	
 	public String generateUserID() {
 		String userID = UUID.randomUUID().toString();

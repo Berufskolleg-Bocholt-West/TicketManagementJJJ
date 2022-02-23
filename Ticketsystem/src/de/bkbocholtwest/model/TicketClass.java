@@ -1,10 +1,11 @@
 package de.bkbocholtwest.model;
 
 import java.sql.Date;
+import java.util.UUID;
 
-public class Ticket {
+public class TicketClass {
 	
-	private int ticketID;
+	private String ticketID;
 	private String description;
 	private String title;
 	String[] status = {"pending", "ongoing", "qualityAssurance", "done"};
@@ -13,14 +14,13 @@ public class Ticket {
 	private Date createdDate;
 	private CommentSection comments;
 	
-	public Ticket() {
+	public TicketClass() {
 		
 	}
 	
-	public Ticket(int ticketID, String description, String title, String[] status, User editor, User creator,
+	public TicketClass(int ticketID, String description, String title, String[] status, User editor, User creator,
 			Date createdDate, CommentSection comments) {
-		super();
-		this.ticketID = ticketID;
+		this.ticketID = generateTicketID();
 		this.description = description;
 		this.title = title;
 		this.status = status;
@@ -30,14 +30,11 @@ public class Ticket {
 		this.comments = comments;
 	}
 
-
-	public int getTicketID() {
+	public String generateTicketID() {
+		String ticketID = UUID.randomUUID().toString();
 		return ticketID;
 	}
 
-	public void setTicketID(int ticketID) {
-		this.ticketID = ticketID;
-	}
 
 	public String getDescription() {
 		return description;
