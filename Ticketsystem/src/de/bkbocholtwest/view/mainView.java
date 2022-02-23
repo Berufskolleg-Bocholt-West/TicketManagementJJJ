@@ -3,6 +3,9 @@ package de.bkbocholtwest.view;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
+import de.bkbocholtwest.model.App;
+
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
@@ -11,8 +14,10 @@ import java.awt.event.ActionEvent;
 public class mainView {
 
 	private JFrame mainFrame;
-	private mainView win;
+	
 	public static mainView mainWindow;
+	
+	private App prg;
 	
 	/**
 	 * Launch the application.
@@ -36,6 +41,11 @@ public class mainView {
 	 */
 	public mainView() {
 		initialize();
+		prg = new App();
+	}
+	
+	public App getPRG() {
+		return prg;
 	}
 
 	/**
@@ -80,12 +90,6 @@ public class mainView {
 		mainFrame.setVisible(true);
 	}
 	
-	public void setMe(mainView window) {
-		win=window;
-	}
 	
-	public mainView getMe() {
-		return win;
-	}
 
 }

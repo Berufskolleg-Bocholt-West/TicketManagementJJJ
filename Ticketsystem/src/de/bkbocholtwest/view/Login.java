@@ -19,7 +19,7 @@ public class Login extends mainView{
 
 	public JFrame frame;
 	private JTextField txtUsername;
-	App app = new App();
+	
 	private JPasswordField txtpasswordField;
 
 	/**
@@ -96,7 +96,7 @@ public class Login extends mainView{
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				boolean successLog = app.login(txtUsername.getText(), txtpasswordField.getText());
+				boolean successLog = mainWindow.getPRG().login(txtUsername.getText(), txtpasswordField.getText());
 				if (successLog) {
 					//success login username and pass are correct
 					lblPassOrUserWrong.setEnabled(false);
