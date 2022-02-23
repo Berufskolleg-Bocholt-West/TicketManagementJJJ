@@ -32,6 +32,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import java.awt.Color;
+import javax.swing.JScrollPane;
 
 public class Ticket {
 
@@ -83,14 +84,15 @@ public class Ticket {
 		panelCommentSection.setLayout(null);
 		
 		txtWriteAComment = new JTextField();
-		txtWriteAComment.setText("Write a comment...");
 		txtWriteAComment.setBounds(10, 11, 428, 51);
+		txtWriteAComment.setText("Write a comment...");
 		panelCommentSection.add(txtWriteAComment);
 		txtWriteAComment.setColumns(10);
 		
-		JScrollBar scrollBarCommentSection = new JScrollBar();
-		scrollBarCommentSection.setBounds(10, 66, 428, 116);
-		panelCommentSection.add(scrollBarCommentSection);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), null, null, null));
+		scrollPane.setBounds(10, 183, 428, -113);
+		panelCommentSection.add(scrollPane);
 		
 		JPanel panelTicketId = new JPanel();
 		panelTicketId.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
