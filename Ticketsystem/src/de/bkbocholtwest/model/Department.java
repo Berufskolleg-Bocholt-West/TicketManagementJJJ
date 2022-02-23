@@ -10,7 +10,7 @@ public class Department {
 	
 	private String name;
 	
-	private ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+	private ArrayList<TicketClass> tickets = new ArrayList<TicketClass>();
 	
 	public ArrayList<User> getMembers() {
 		return members;
@@ -28,11 +28,11 @@ public class Department {
 		this.name = name;
 	}
 
-	public ArrayList<Ticket> getTickets() {
+	public ArrayList<TicketClass> getTickets() {
 		return tickets;
 	}
 
-	public void setTickets(ArrayList<Ticket> tickets) {
+	public void setTickets(ArrayList<TicketClass> tickets) {
 		this.tickets = tickets;
 	}
 
