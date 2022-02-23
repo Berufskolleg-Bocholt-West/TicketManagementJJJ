@@ -130,6 +130,10 @@ public class App {
 		}
 	}
 	
+	public boolean getIsLocked() {
+		return isLocked;
+	}
+	
 	public void writer(File file, String text) {
 		 try {
 			 	
