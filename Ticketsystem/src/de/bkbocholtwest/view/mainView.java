@@ -19,6 +19,8 @@ public class mainView {
 	
 	private App prg;
 	
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -29,6 +31,7 @@ public class mainView {
 				try {
 					mainWindow = new mainView();
 					mainWindow.mainFrame.setVisible(true);
+					mainWindow.goToLogin();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -57,15 +60,7 @@ public class mainView {
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("Start System");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				 goToLogin();
-				
-			}
-		});
-		btnNewButton.setBounds(166, 118, 95, 23);
-		mainFrame.getContentPane().add(btnNewButton);
+		
 	}
 	
 	public JFrame getMainFrame() {
