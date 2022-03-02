@@ -33,8 +33,12 @@ public class mainView {
 				try {
 					mainWindow = new mainView();
 					mainWindow.mainFrame.setVisible(true);
+					if(mainWindow.getPRG().getIsLocked()) {
+						mainWindow.goToLock();
+					}else {
+						mainWindow.goToLogin();
+					}
 					
-					mainWindow.goToLogin();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

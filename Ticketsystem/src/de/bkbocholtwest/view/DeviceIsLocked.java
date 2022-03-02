@@ -1,6 +1,7 @@
 package de.bkbocholtwest.view;
 
 import java.awt.EventQueue;
+import java.util.Timer;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -10,6 +11,7 @@ import javax.swing.JLabel;
 public class DeviceIsLocked extends mainView{
 
 	public JFrame frame;
+	
 
 	/**
 	 * Launch the application.
@@ -32,6 +34,7 @@ public class DeviceIsLocked extends mainView{
 	 */
 	public DeviceIsLocked() {
 		initialize();
+		Timer timer = new Timer();
 	}
 
 	/**

@@ -109,6 +109,7 @@ public class App {
 		writtenUnlockTime.setMinutes(writtenUnlockTime.getMinutes()+penaltyTime);
 		String time = df.format(writtenUnlockTime);
 		writer(dataFile, time);
+		isLocked =true;
 		return penaltyTime;
 	}
 	

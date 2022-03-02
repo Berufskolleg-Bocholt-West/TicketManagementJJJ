@@ -68,7 +68,7 @@ public class Login extends mainView{
 			public void actionPerformed(ActionEvent e) {
 				
 				//hier noch überprüfen ob der User ein Admin ist.
-				Register reg = new Register();
+				//Register reg = new Register();
 				
 				
 				mainWindow.goToRegister();
@@ -105,6 +105,10 @@ public class Login extends mainView{
 				}else {
 					lblPassOrUserWrong.setEnabled(true);
 					lblPassOrUserWrong.setVisible(true);
+				}
+				
+				if(mainWindow.getPRG().getIsLocked()) {
+					mainWindow.goToLock();
 				}
 			}	
 		});
