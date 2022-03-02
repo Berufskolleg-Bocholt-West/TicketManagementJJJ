@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 
 public class mainView {
 
-	private JFrame mainFrame;
+	public JFrame mainFrame;
 	
 	public static mainView mainWindow;
 	
@@ -63,7 +63,8 @@ public class mainView {
 	 */
 	private void initialize() {
 		mainFrame = new JFrame();
-		mainFrame.setBounds(100, 100, 450, 300);
+		mainFrame.setBounds(100, 100, 450, 400);
+		//mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.getContentPane().setLayout(null);
 		
@@ -77,7 +78,6 @@ public class mainView {
 	public void goToLogin() {
 		Login log = new Login();
 		mainFrame.setVisible(false);
-		
 		mainFrame.setContentPane(log.frame.getContentPane());  
 		
 		mainFrame.setVisible(true);
@@ -87,7 +87,7 @@ public class mainView {
 		Register reg = new Register();
 		mainFrame.setVisible(false);
 		
-		mainFrame.setContentPane(reg.frame.getContentPane());  
+		mainFrame.setContentPane(reg.frame.getContentPane()); 
 		
 		mainFrame.setVisible(true);
 	}
@@ -100,7 +100,6 @@ public class mainView {
 		
 		mainFrame.setVisible(true);
 	}
-	
 	
 
 }

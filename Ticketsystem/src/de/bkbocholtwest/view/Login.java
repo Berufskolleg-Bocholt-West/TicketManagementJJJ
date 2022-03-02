@@ -21,6 +21,8 @@ public class Login extends mainView{
 	private JTextField txtUsername;
 	
 	private JPasswordField txtpasswordField;
+	
+	public int counter = 3;
 
 	/**
 	 * Launch the application.
@@ -48,11 +50,25 @@ public class Login extends mainView{
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	
+	public int attemptCounter(int counter, JLabel lblAttemptsCounter) {
+		
+		lblAttemptsCounter.setText("You have "+counter+" attempts left.");
+		lblAttemptsCounter.setVisible(true);
+		
+		return counter;
+	}
+	
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		JLabel lblAttemptsCounter = new JLabel("You have "+counter+" attempts left.");
+		lblAttemptsCounter.setBounds(154, 249, 220, 37);
+		lblAttemptsCounter.setVisible(false);
+		frame.getContentPane().add(lblAttemptsCounter);
 		
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setBounds(52, 54, 92, 25);
@@ -67,9 +83,7 @@ public class Login extends mainView{
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//hier noch überprüfen ob der User ein Admin ist.
-				//Register reg = new Register();
-				
+				//hier noch überprüfen ob der User ein Admin ist.				
 				
 				mainWindow.goToRegister();
 				
@@ -101,10 +115,17 @@ public class Login extends mainView{
 					//success login username and pass are correct
 					lblPassOrUserWrong.setEnabled(false);
 					lblPassOrUserWrong.setVisible(false);
+					lblAttemptsCounter.setVisible(false);
 					//hier wird das nächste gui aufgerufen
 				}else {
 					lblPassOrUserWrong.setEnabled(true);
 					lblPassOrUserWrong.setVisible(true);
+					
+					attemptCounter(counter, lblAttemptsCounter);
+					counter--;
+					if (counter == 0) {
+						counter = 3;
+					}
 				}
 				
 				if(mainWindow.getPRG().getIsLocked()) {
@@ -119,16 +140,7 @@ public class Login extends mainView{
 		txtpasswordField.setBounds(154, 86, 220, 28);
 		frame.getContentPane().add(txtpasswordField);
 		
-		JLabel lblAttemptsCounter = new JLabel("You have ... attempts left.");
-		lblAttemptsCounter.setBounds(154, 249, 220, 37);
-		lblAttemptsCounter.setVisible(false);
-		frame.getContentPane().add(lblAttemptsCounter);
-		
-		JLabel lblDeviceLock = new JLabel("Your Device is locked for ... sec.");
-		lblDeviceLock.setBounds(154, 11, 220, 32);
-		lblDeviceLock.setVisible(false);
-		frame.getContentPane().add(lblDeviceLock);
-		
+
 
 		
 		
