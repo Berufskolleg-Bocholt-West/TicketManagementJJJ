@@ -5,10 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
-public class DeviceIsLocked {
+public class DeviceIsLocked extends mainView{
 
-	private JFrame frame;
+	public JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -42,8 +43,8 @@ public class DeviceIsLocked {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("locked");
-		btnNewButton.setBounds(201, 126, 89, 23);
-		frame.getContentPane().add(btnNewButton);
+		JLabel lblNewLabel = new JLabel("Your Device has been locked");
+		lblNewLabel.setBounds(121, 105, 159, 32);
+		frame.getContentPane().add(lblNewLabel);
 	}
 }

@@ -21,6 +21,8 @@ public class mainView {
 	
 	
 	
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -31,6 +33,7 @@ public class mainView {
 				try {
 					mainWindow = new mainView();
 					mainWindow.mainFrame.setVisible(true);
+					
 					mainWindow.goToLogin();
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -81,6 +84,15 @@ public class mainView {
 		mainFrame.setVisible(false);
 		
 		mainFrame.setContentPane(reg.frame.getContentPane());  
+		
+		mainFrame.setVisible(true);
+	}
+	
+	public void goToLock() {
+		DeviceIsLocked devLo = new DeviceIsLocked();
+		mainFrame.setVisible(false);
+		
+		mainFrame.setContentPane(devLo.frame.getContentPane());  
 		
 		mainFrame.setVisible(true);
 	}
