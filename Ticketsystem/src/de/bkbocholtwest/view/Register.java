@@ -55,7 +55,7 @@ public class Register extends mainView{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblUsername = new JLabel("Username:");
+		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setBounds(26, 50, 112, 28);
 		frame.getContentPane().add(lblUsername);
 		
@@ -64,7 +64,7 @@ public class Register extends mainView{
 		frame.getContentPane().add(txtUsername);
 		txtUsername.setColumns(10);
 		
-		JLabel lblPassword = new JLabel("create password: ");
+		JLabel lblPassword = new JLabel("create password");
 		lblPassword.setBounds(25, 87, 113, 28);
 		frame.getContentPane().add(lblPassword);
 		

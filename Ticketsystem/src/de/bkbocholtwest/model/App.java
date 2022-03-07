@@ -82,15 +82,19 @@ public class App {
 		}
 	}
 	
-	public boolean login(String username, String password) {
+	public int login(String username, String password) {
+		if(username.equals("")||password.equals("")) {
+			return 2;
+		}
 		LoginAuth.readUsersFromDatabase();
 		for (User u : users) {
+			
 			if(u.getUsername().equals(username) && u.getPassword().equals(generateHash(password))) {
 				activeUser = u;
 				System.out.println(activeUser);
 				lockCounter = 0;
 				attemptCounter = 0;
-				return true;
+				return 1;
 				
 			}
 		}
@@ -100,7 +104,7 @@ public class App {
 			lockCounter++;
 			penalty(lockCounter);
 		}
-		return false;
+		return 0;
 	}
 	
 	public int penalty(int lockCounter) {

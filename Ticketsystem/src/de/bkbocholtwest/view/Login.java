@@ -22,7 +22,7 @@ public class Login extends mainView{
 	
 	private JPasswordField txtpasswordField;
 	
-	public int counter = 3;
+	public int counter = 2;
 
 	/**
 	 * Launch the application.
@@ -64,6 +64,11 @@ public class Login extends mainView{
 		frame.setBounds(100, 100, 450, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNoText =  new JLabel("Password and Username cannot be empty!");
+		lblNoText.setBounds(154, 224, 272, 28);
+		lblNoText.setVisible(false);
+		frame.getContentPane().add(lblNoText);
 		
 		JLabel lblAttemptsCounter = new JLabel("You have "+counter+" attempts left.");
 		lblAttemptsCounter.setBounds(154, 249, 220, 37);
@@ -109,17 +114,26 @@ public class Login extends mainView{
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				boolean successLog = mainWindow.getPRG().login(txtUsername.getText(), txtpasswordField.getText());
-				if (successLog) {
+				int successLog = mainWindow.getPRG().login(txtUsername.getText(), txtpasswordField.getText());
+				if (successLog == 1) {
 					//success login username and pass are correct
 					lblPassOrUserWrong.setEnabled(false);
 					lblPassOrUserWrong.setVisible(false);
 					lblAttemptsCounter.setVisible(false);
+					lblNoText.setVisible(false);
 					//hier wird das nächste gui aufgerufen
-				}else {
+					
+				}else if(successLog == 2) {
+					lblPassOrUserWrong.setEnabled(false);
+					lblPassOrUserWrong.setVisible(false);
+					lblAttemptsCounter.setVisible(false);
+					lblNoText.setVisible(true);
+					
+				}
+				else{
 					lblPassOrUserWrong.setEnabled(true);
 					lblPassOrUserWrong.setVisible(true);
+					lblNoText.setVisible(false);
 					
 					attemptCounter(counter, lblAttemptsCounter);
 					counter--;
@@ -139,6 +153,9 @@ public class Login extends mainView{
 		txtpasswordField = new JPasswordField();
 		txtpasswordField.setBounds(154, 86, 220, 28);
 		frame.getContentPane().add(txtpasswordField);
+		
+
+		
 		
 
 
