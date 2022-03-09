@@ -36,6 +36,14 @@ public class DeviceIsLocked extends mainView{
 		initialize();
 		Timer timer = new Timer();
 	}
+	
+	
+	public void clock() {
+		Thread tim = new Thread();
+			
+			
+		
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -51,3 +59,12 @@ public class DeviceIsLocked extends mainView{
 		frame.getContentPane().add(lblNewLabel);
 	}
 }
+
+
+
+
+
+
+
+
+

@@ -94,7 +94,13 @@ public class LoginAuth {
 		try {
 			while(rs.next()){
 
-				App.users.add(new User(rs.getString(1), rs.getString(2), null, rs.getString(5)));
+				Department readDep = App.dep.get(rs.getInt(4)-1);
+				User madeUser =new User(rs.getString(1), rs.getString(2), readDep, rs.getString(5));
+				
+				//App.users.add(new User(rs.getString(1), rs.getString(2), readDep, rs.getString(5)));
+				App.users.add(madeUser);
+				
+				readDep.getMembers().add(madeUser);
 				//System.out.println(users);
 				}
 		} catch (SQLException e) {
