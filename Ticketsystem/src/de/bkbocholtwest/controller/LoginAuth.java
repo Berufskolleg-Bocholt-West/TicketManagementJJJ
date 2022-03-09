@@ -1,5 +1,6 @@
 package de.bkbocholtwest.controller;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,14 +13,18 @@ import de.bkbocholtwest.model.User;
 
 public class LoginAuth {
 	
+	private static Connection authCon;
+	
+	public LoginAuth(Connection appCon) {
+		authCon =appCon;
+	}
+
+	
 	public static void writeUsersToDatabase(String username, String password, String departmentName, int admin, String userID) {
-		DBConnection connection = new DBConnection();
-		App application = new App();
-		connection.connect();
-		application.con = connection.getCon();
+		
 		Statement stm = null;
 		try {
-			stm = application.con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			stm = authCon.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,13 +49,10 @@ public class LoginAuth {
 
 	}
 	public static void writeUsersToDatabase(String username, String password, String departmentName, String userID) {
-		DBConnection connection = new DBConnection();
-		App application = new App();
-		connection.connect();
-		application.con = connection.getCon();
+		
 		Statement stm = null;
 		try {
-			stm = application.con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			stm = authCon.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,13 +75,10 @@ public class LoginAuth {
 	}
 	
 	public static void readUsersFromDatabase() {
-		DBConnection conn = new DBConnection();
-		App prg = new App();
-		conn.connect();
-		prg.con=conn.getCon();
+		
 		Statement stm = null;
 		try {
-			stm = prg.con.createStatement();
+			stm = authCon.createStatement();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -94,14 +93,14 @@ public class LoginAuth {
 		try {
 			while(rs.next()){
 
-				Department readDep = App.dep.get(rs.getInt(4)-1);
-				User madeUser =new User(rs.getString(1), rs.getString(2), readDep, rs.getString(5));
+				Department readDep = App.dep.get(rs.getInt(3)-1);
 				
-				//App.users.add(new User(rs.getString(1), rs.getString(2), readDep, rs.getString(5)));
+				User madeUser =new User(rs.getString(1), rs.getString(2), readDep, rs.getString(5));
+
 				App.users.add(madeUser);
 				
 				readDep.getMembers().add(madeUser);
-				//System.out.println(users);
+
 				}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -111,14 +110,10 @@ public class LoginAuth {
 	}
 	
 	public static void readDepartmentFromDatabase() {
-		ArrayList<TicketClass> tickets = new ArrayList<TicketClass>();
-		DBConnection conn = new DBConnection();
-		App prg = new App();
-		conn.connect();
-		prg.con=conn.getCon();
+		
 		Statement stm = null;
 		try {
-			stm = prg.con.createStatement();
+			stm = authCon.createStatement();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

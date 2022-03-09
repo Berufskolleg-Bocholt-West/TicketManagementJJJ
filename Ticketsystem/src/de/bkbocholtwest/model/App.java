@@ -30,7 +30,7 @@ import de.bkbocholtwest.view.Login;
 
 public class App {
 
-	public Connection con;
+	public static Connection con;
 	public static User activeUser;
 	public int lockCounter;
 	public int attemptCounter;
@@ -56,8 +56,15 @@ public class App {
 	public static ArrayList<Department> dep = new ArrayList<Department>();
 	
 	public App(){
+		DBConnection conn = new DBConnection();
+		conn.connect();
+		con = conn.getCon();
+		LoginAuth logAuth = new LoginAuth(con);
 		pathCheck();
 		checkPenalty();
+		LoginAuth.readDepartmentFromDatabase();
+		LoginAuth.readUsersFromDatabase();
+	
 	}
 			
 	public static void main(String[] args) {
@@ -88,7 +95,7 @@ public class App {
 		if(username.equals("")||password.equals("")) {
 			return 2;
 		}
-		LoginAuth.readUsersFromDatabase();
+
 		for (User u : users) {
 			
 			if(u.getUsername().equals(username) && u.getPassword().equals(generateHash(password))) {
