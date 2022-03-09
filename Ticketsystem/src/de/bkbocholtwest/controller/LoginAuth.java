@@ -3,8 +3,11 @@ package de.bkbocholtwest.controller;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import de.bkbocholtwest.model.App;
+import de.bkbocholtwest.model.Department;
+import de.bkbocholtwest.model.TicketClass;
 import de.bkbocholtwest.model.User;
 
 public class LoginAuth {
@@ -100,5 +103,46 @@ public class LoginAuth {
 		}
 
 	}
+	
+	public static void readDepartmentFromDatabase() {
+		ArrayList<TicketClass> tickets = new ArrayList<TicketClass>();
+		DBConnection conn = new DBConnection();
+		App prg = new App();
+		conn.connect();
+		prg.con=conn.getCon();
+		Statement stm = null;
+		try {
+			stm = prg.con.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ResultSet rs = null;	
+		try {
+			rs = stm.executeQuery("SELECT * FROM Department;");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			while(rs.next()){
+				
+				int id = rs.getInt(1); //DepartmentID
+				String name = rs.getString(2);
+				System.out.println("ID: "+id+" Name: "+name	);//DepartmentName
+				/*id; Members des dep; name des Departments, Tickets des Dep*/
+				
+				
+				App.dep.add(new Department(id, name));
+				
+
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
 
 }

@@ -16,6 +16,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.JList;
+import javax.swing.JComboBox;
 
 public class Register extends mainView{
 
@@ -60,7 +62,7 @@ public class Register extends mainView{
 		frame.getContentPane().add(lblUsername);
 		
 		txtUsername = new JTextField();
-		txtUsername.setBounds(148, 47, 218, 31);
+		txtUsername.setBounds(148, 49, 218, 31);
 		frame.getContentPane().add(txtUsername);
 		txtUsername.setColumns(10);
 		
@@ -76,19 +78,26 @@ public class Register extends mainView{
 				
 			}
 		});
-		btnLogin.setBounds(148, 171, 218, 28);
+		btnLogin.setBounds(148, 215, 218, 28);
 		frame.getContentPane().add(btnLogin);
 		
 		JLabel lblRegister = new JLabel("The user was successful created.");
 		lblRegister.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRegister.setBounds(148, 223, 218, 47);
+		lblRegister.setBounds(148, 254, 218, 47);
 		lblRegister.setVisible(false);
 		frame.getContentPane().add(lblRegister);
+		
+		
+		String[] petStrings = { "Developer", "Accountant", "Design"};
+		JComboBox comboBox = new JComboBox(petStrings);
+		comboBox.setBounds(148, 127, 218, 28);
+		frame.getContentPane().add(comboBox);
+		
 		
 		JLabel lblRegisterUnsuccessful = new JLabel("Username and Password cannot be empty.");
 		lblRegisterUnsuccessful.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRegisterUnsuccessful.setFont(new Font("Tahoma", Font.BOLD, 10));
-		lblRegisterUnsuccessful.setBounds(148, 223, 218, 47);
+		lblRegisterUnsuccessful.setBounds(148, 254, 218, 47);
 		lblRegisterUnsuccessful.setVisible(false);
 		frame.getContentPane().add(lblRegisterUnsuccessful);
 		
@@ -114,12 +123,17 @@ public class Register extends mainView{
 				
 			}
 		});
-		btnRegister.setBounds(148, 137, 218, 23);
+		btnRegister.setBounds(148, 181, 218, 23);
 		frame.getContentPane().add(btnRegister);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(148, 87, 218, 28);
 		frame.getContentPane().add(passwordField);
 		
+		JLabel lblDepartment = new JLabel("Department");
+		lblDepartment.setBounds(26, 127, 112, 28);
+		frame.getContentPane().add(lblDepartment);
+		
+
 	}
 }

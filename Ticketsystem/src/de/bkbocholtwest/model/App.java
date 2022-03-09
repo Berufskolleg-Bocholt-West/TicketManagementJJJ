@@ -53,13 +53,15 @@ public class App {
 	
 	public static ArrayList<User> users = new ArrayList<User>();
 	
+	public static ArrayList<Department> dep = new ArrayList<Department>();
+	
 	public App(){
 		pathCheck();
 		checkPenalty();
 	}
 			
 	public static void main(String[] args) {
-
+		LoginAuth.readDepartmentFromDatabase();
 	}
 	
 		

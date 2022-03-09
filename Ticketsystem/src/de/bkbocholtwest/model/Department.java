@@ -8,11 +8,15 @@ public class Department {
 	
 	private ArrayList<User> members = new ArrayList<User>();
 	
+	private int departmentID;
+	
 	private String name;
 	
 	private ArrayList<TicketClass> tickets = new ArrayList<TicketClass>();
 	
 	public ArrayList<User> getMembers() {
+		
+		
 		return members;
 	}
 
@@ -29,6 +33,8 @@ public class Department {
 	}
 
 	public ArrayList<TicketClass> getTickets() {
+		
+		
 		return tickets;
 	}
 
@@ -39,4 +45,23 @@ public class Department {
 	public Department() {
 		
 	}
+
+	public ArrayList<User> getMembersMethod(){
+	 //User werden aus der Datenbank abgerufen und in die members list geschrieben
+		return members;
+	}
+	
+	public ArrayList<TicketClass> getTicketsForDepartment(){
+		 //User werden aus der Datenbank abgerufen und in die members list geschrieben
+			return tickets;
+		}
+
+	public Department(int departmentID, String name) {
+		this.departmentID = departmentID;
+		this.name = name;
+
+		
+		//this.tickets = getTicketsMethod();
+	}
+	
 }
