@@ -126,6 +126,11 @@ public class App {
 		return penaltyTime;
 	}
 	
+	public Date getPenalty() {
+		 
+		return readUnlockTime;
+	}
+	
 	public void checkPenalty() {
 		try {
 			readUnlockTime= df.parse(reader(dataFile));

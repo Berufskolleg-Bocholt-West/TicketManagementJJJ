@@ -1,6 +1,7 @@
 package de.bkbocholtwest.view;
 
 import java.awt.EventQueue;
+import java.util.Date;
 import java.util.Timer;
 
 import javax.swing.JFrame;
@@ -35,12 +36,36 @@ public class DeviceIsLocked extends mainView{
 	public DeviceIsLocked() {
 		initialize();
 		Timer timer = new Timer();
+		clock();
 	}
 	
 	
 	public void clock() {
-		Thread tim = new Thread();
-			
+		Date rP = mainWindow.getPRG().getPenalty();
+		Thread tim = new Thread() {
+			public void run() {
+				long dt;
+				int hours;
+				int minutes;
+				int seconds;
+				try {
+					for(;;) {
+						 dt = rP.getTime()-new Date().getTime();
+						Date d=new Date(dt);
+						 hours = d.getHours();
+						 minutes = d.getMinutes();
+						 seconds = d.getSeconds();
+
+						String timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+						System.out.println(timeString);
+						sleep(1000);
+					}
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		tim.start();
 			
 		
 	}
