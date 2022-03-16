@@ -50,8 +50,6 @@ public class LoginAuth {
 	}
 	public static void writeUsersToDatabase(String username, String password, int departmentID, String userID) {
 		
-		//User madeUser = new User(username, password, departmentID, userID);
-		//App.users.add(madeUser);
 		
 		Statement stm = null;
 		try {
@@ -74,7 +72,14 @@ public class LoginAuth {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		App.users.clear();
+		readUsersFromDatabase();
+		// hier departmentID in Department datatype umwandeln
+		
+		Department readDep = App.dep.get(departmentID-1);
+		
+		User madeUser = new User(username, password, readDep, userID);
+		App.users.add(madeUser);
 	}
 	
 	public static void readUsersFromDatabase() {
