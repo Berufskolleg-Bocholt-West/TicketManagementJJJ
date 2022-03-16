@@ -46,6 +46,14 @@ public class Department {
 		
 	}
 
+	public int getDepartmentID() {
+		return departmentID;
+	}
+
+	public void setDepartmentID(int departmentID) {
+		this.departmentID = departmentID;
+	}
+
 	public ArrayList<User> getMembersMethod(){
 	 //User werden aus der Datenbank abgerufen und in die members list geschrieben
 		return members;

@@ -109,7 +109,16 @@ public class LoginAuth {
 		try {
 			while(rs.next()){
 
-				Department readDep = App.dep.get(rs.getInt(3)-1);
+				Department readDep=null;
+				
+				
+				for(Department rD: App.dep) {
+					if(rD.getDepartmentID()==(rs.getInt(3))) {
+						readDep = rD;
+					
+						break;
+					}
+				}
 				
 				User madeUser =new User(rs.getString(1), rs.getString(2), readDep, rs.getString(5));
 

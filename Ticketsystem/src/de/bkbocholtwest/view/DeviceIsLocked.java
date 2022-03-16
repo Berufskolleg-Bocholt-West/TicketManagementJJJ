@@ -75,6 +75,8 @@ public class DeviceIsLocked extends mainView{
 					for(;;) {
 						 dt = rP.getTime()-new Date().getTime();
 						Date d=new Date(dt);
+						System.out.println(dt);
+						System.out.println(d);
 						 hours = d.getHours();
 						 minutes = d.getMinutes();
 						 seconds = d.getSeconds();
