@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 
 import de.bkbocholtwest.model.Admin;
 import de.bkbocholtwest.model.App;
+import de.bkbocholtwest.model.Department;
 
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
@@ -88,8 +89,14 @@ public class Register extends mainView{
 		frame.getContentPane().add(lblRegister);
 		
 		
-		String[] petStrings = { "Developer", "Accountant", "Design"};
-		JComboBox comboBox = new JComboBox(petStrings);
+		//String[] departments2 = { "Developer", "Accountant", "Design"};
+		String[] depNameList = new String[App.dep.size()];
+		int i=0;
+		for (Department department : App.dep) {
+			depNameList[i]=department.getName();
+			i++;
+		}
+		JComboBox comboBox = new JComboBox(depNameList);
 		comboBox.setBounds(148, 127, 218, 28);
 		frame.getContentPane().add(comboBox);
 		
@@ -111,7 +118,7 @@ public class Register extends mainView{
 				
 				Admin ad = new Admin();
 				if(!txtUsername.getText().isEmpty() && !passwordField.getText().isEmpty()) {
-					ad.createUser(txtUsername.getText(), passwordField.getText());
+					ad.createUser(txtUsername.getText(), passwordField.getText(), comboBox.getSelectedIndex()+1);
 					lblRegisterUnsuccessful.setVisible(false);
 					lblRegister.setVisible(true);
 					lblRegister.grabFocus();

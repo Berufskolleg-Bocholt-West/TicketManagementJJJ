@@ -30,7 +30,7 @@ public class User {
 
 	public String toString() {
 			
-		return "UserID: "+userID+" Username: "+username +" Password: " +password;
+		return "UserID: "+userID+"\nUsername: "+username +"\nPassword: " +password + "\nDepartment:" + department.getName();
 	}
 	
 	public String getUsername() {

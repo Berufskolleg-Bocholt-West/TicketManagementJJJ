@@ -48,7 +48,10 @@ public class LoginAuth {
 
 
 	}
-	public static void writeUsersToDatabase(String username, String password, String departmentName, String userID) {
+	public static void writeUsersToDatabase(String username, String password, int departmentID, String userID) {
+		
+		//User madeUser = new User(username, password, departmentID, userID);
+		//App.users.add(madeUser);
 		
 		Statement stm = null;
 		try {
@@ -63,7 +66,7 @@ public class LoginAuth {
 			rs.moveToInsertRow();                                 
 			rs.updateString(1, username);
 			rs.updateString(2, password);
-			rs.updateString(3, departmentName);
+			rs.updateInt(3, departmentID);
 			rs.updateString(5, userID);
 			rs.insertRow();                                         
 			rs.moveToCurrentRow();
@@ -135,7 +138,7 @@ public class LoginAuth {
 				
 				
 				App.dep.add(new Department(id, name));
-				
+
 
 				}
 		} catch (SQLException e) {

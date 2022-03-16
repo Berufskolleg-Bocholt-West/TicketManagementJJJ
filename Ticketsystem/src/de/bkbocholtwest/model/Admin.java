@@ -8,9 +8,11 @@ public class Admin extends User{
 		super();
 	}
 	
-	public void createUser(String username, String password) {
+	public void createUser(String username, String password, int departmentID) {
 		
-		LoginAuth.writeUsersToDatabase(username, App.generateHash(password), new Department().getName(), generateUserID());
+		LoginAuth.writeUsersToDatabase(username, App.generateHash(password), departmentID, generateUserID());
+		
+		
 		
 		//second method to give admin, admin set default 0
 		//LoginAuth.writeUsersToDatabase(username, password, password, 1, username);

@@ -31,6 +31,7 @@ public class mainView {
 
 			public void run() {
 				try {
+					
 					mainWindow = new mainView();
 					mainWindow.mainFrame.setVisible(true);
 					if(mainWindow.getPRG().getIsLocked()) {
@@ -51,7 +52,7 @@ public class mainView {
 	 */
 	public mainView() {
 		initialize();
-		prg = new App();
+		
 	}
 	
 	public App getPRG() {
