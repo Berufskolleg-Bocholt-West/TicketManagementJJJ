@@ -81,6 +81,13 @@ public class mainView {
 		return mainFrame;
 	}
 	
+	public void goToMenu() {
+		Menu men = new Menu();
+		mainFrame.setVisible(false);
+		mainFrame.setContentPane(men.frame.getContentPane());  
+		
+		mainFrame.setVisible(true);
+	}
 	public void goToLogin() {
 		Login log = new Login();
 		mainFrame.setVisible(false);

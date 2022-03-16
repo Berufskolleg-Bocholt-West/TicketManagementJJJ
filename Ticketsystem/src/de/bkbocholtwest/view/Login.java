@@ -122,6 +122,7 @@ public class Login extends mainView{
 					lblAttemptsCounter.setVisible(false);
 					lblNoText.setVisible(false);
 					//hier wird das nächste gui aufgerufen
+					mainWindow.goToMenu();
 					
 				}else if(successLog == 2) {
 					lblPassOrUserWrong.setEnabled(false);

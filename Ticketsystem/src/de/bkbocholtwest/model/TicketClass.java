@@ -18,7 +18,8 @@ public class TicketClass {
 		
 	}
 	
-	public TicketClass(int ticketID, String description, String title, String[] status, User editor, User creator,
+
+/*	public TicketClass(String ticketID ,String description, String title, String status[], User editor, User creator,
 			Date createdDate, CommentSection comments) {
 		this.ticketID = generateTicketID();
 		this.description = description;
@@ -28,13 +29,25 @@ public class TicketClass {
 		this.creator = creator;
 		this.createdDate = createdDate;
 		this.comments = comments;
-	}
+	}*/
+	
+	
 
-	public String generateTicketID() {
+	public static String generateTicketID() {
 		String ticketID = UUID.randomUUID().toString();
 		return ticketID;
 	}
 
+
+	public TicketClass(String ticketID, String description, String title) {
+	this.ticketID = ticketID;
+	this.description = description;
+	this.title = title;
+	}
+	
+	public String toString() {
+		return title+": "+description;
+	}
 
 	public String getDescription() {
 		return description;

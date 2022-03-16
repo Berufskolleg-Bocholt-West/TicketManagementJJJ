@@ -12,10 +12,10 @@ public class User {
 	public boolean admin;
 	private Department department;
 	
-	private ArrayList<TicketClass> createdTickets = new ArrayList<TicketClass>();
-	private ArrayList<TicketClass> pendingTickets = new ArrayList<TicketClass>();
+	public static ArrayList<TicketClass> createdTickets = new ArrayList<TicketClass>();
+	public static ArrayList<TicketClass> pendingTickets = new ArrayList<TicketClass>();
 	
-	public String generateUserID() {
+	public String generateID() {
 		String userID = UUID.randomUUID().toString();
 		return userID;
 	}
@@ -25,9 +25,15 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.department = department;
-		this.userID = generateUserID();
+		this.userID = generateID();
 	}
-
+	
+	public void Logout() {
+		App.activeUser = null;
+		createdTickets.clear();
+		pendingTickets.clear();
+	}
+	
 	public String toString() {
 			
 		return "UserID: "+userID+"\nUsername: "+username +"\nPassword: " +password + "\nDepartment:" + department.getName();
@@ -65,8 +71,9 @@ public class User {
 		
 	}
 	
-	public void createTickets() {
-		
+	public void createTickets(String description, String title) {
+		createdTickets.add(new TicketClass(TicketClass.generateTicketID(), description, title));
+		//add(new TicketClass(TicketClass.generateTicketID(), "description", "title");
 	}
 
 	public boolean isAdmin() {

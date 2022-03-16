@@ -10,7 +10,7 @@ public class Admin extends User{
 	
 	public void createUser(String username, String password, int departmentID) {
 		
-		LoginAuth.writeUsersToDatabase(username, App.generateHash(password), departmentID, generateUserID());
+		LoginAuth.writeUsersToDatabase(username, App.generateHash(password), departmentID, generateID());
 		
 		
 		//second method to give admin, admin set default 0
