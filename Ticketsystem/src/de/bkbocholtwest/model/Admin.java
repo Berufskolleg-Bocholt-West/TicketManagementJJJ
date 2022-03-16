@@ -13,9 +13,8 @@ public class Admin extends User{
 		LoginAuth.writeUsersToDatabase(username, App.generateHash(password), departmentID, generateUserID());
 		
 		
-		
 		//second method to give admin, admin set default 0
-		//LoginAuth.writeUsersToDatabase(username, password, password, 1, username);
+		//LoginAuth.writeUsersToDatabase(username, App.generateHash(password), departmentID, 1, generateUserID());
 		
 	}
 	

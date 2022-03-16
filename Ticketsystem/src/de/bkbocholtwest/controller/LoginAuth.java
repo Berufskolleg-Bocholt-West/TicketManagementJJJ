@@ -20,7 +20,7 @@ public class LoginAuth {
 	}
 
 	
-	public static void writeUsersToDatabase(String username, String password, String departmentName, int admin, String userID) {
+	public static void writeUsersToDatabase(String username, String password, int departmentID, int admin, String userID) {
 		
 		Statement stm = null;
 		try {
@@ -35,7 +35,7 @@ public class LoginAuth {
 			rs.moveToInsertRow();                                 
 			rs.updateString(1, username);
 			rs.updateString(2, password);
-			rs.updateString(3, departmentName);
+			rs.updateInt(3, departmentID);
 			rs.updateInt(4, admin);
 			rs.updateString(5, userID);
 			rs.insertRow();                                         
@@ -45,6 +45,14 @@ public class LoginAuth {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		App.users.clear();
+		readUsersFromDatabase();
+		// hier departmentID in Department datatype umwandeln
+		
+		Department readDep = App.dep.get(departmentID-1);
+		
+		User madeUser = new User(username, password, readDep, userID);
+		App.users.add(madeUser);
 
 
 	}
@@ -137,11 +145,10 @@ public class LoginAuth {
 			while(rs.next()){
 				
 				int id = rs.getInt(1); //DepartmentID
-				String name = rs.getString(2);
-				System.out.println("ID: "+id+" Name: "+name	);//DepartmentName
-				/*id; Members des dep; name des Departments, Tickets des Dep*/
+				String name = rs.getString(2); //DepName
 				
-				
+				//System.out.println("ID: "+id+" Name: "+name);
+									
 				App.dep.add(new Department(id, name));
 
 
