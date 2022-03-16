@@ -6,12 +6,14 @@ import java.util.Timer;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import javax.swing.text.JTextComponent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
 public class DeviceIsLocked extends mainView{
 
 	public JFrame frame;
+	private JLabel lblTimer = new JLabel();
 	
 
 	/**
@@ -28,6 +30,27 @@ public class DeviceIsLocked extends mainView{
 				}
 			}
 		});
+	}
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblLock = new JLabel("Your Device has been locked!");
+		lblLock.setBounds(125, 58, 187, 32);
+		frame.getContentPane().add(lblLock);
+		
+		lblTimer.setBounds(125, 101, 187, 32);
+		frame.getContentPane().add(lblTimer);
+	}
+	
+	public void setTimer(String timer) {
+		lblTimer.setText("Locked For: "+ timer);
+
 	}
 
 	/**
@@ -55,10 +78,11 @@ public class DeviceIsLocked extends mainView{
 						 hours = d.getHours();
 						 minutes = d.getMinutes();
 						 seconds = d.getSeconds();
-
+						 
 						String timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
-						System.out.println(timeString);
+						setTimer(timeString);
 						sleep(1000);
+						
 					}
 				} catch(Exception e) {
 					e.printStackTrace();
@@ -70,19 +94,7 @@ public class DeviceIsLocked extends mainView{
 		
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Your Device has been locked");
-		lblNewLabel.setBounds(121, 105, 159, 32);
-		frame.getContentPane().add(lblNewLabel);
-	}
+
 }
 
 
