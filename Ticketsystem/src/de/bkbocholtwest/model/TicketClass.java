@@ -39,10 +39,11 @@ public class TicketClass {
 	}
 
 
-	public TicketClass(String ticketID, String description, String title) {
+	public TicketClass(String ticketID, String description, String title, User creator) {
 	this.ticketID = ticketID;
 	this.description = description;
 	this.title = title;
+	this.creator = creator;
 	}
 	
 	public String toString() {

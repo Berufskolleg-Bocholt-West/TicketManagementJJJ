@@ -64,6 +64,7 @@ public class App {
 		checkPenalty();
 		LoginAuth.readDepartmentFromDatabase();
 		LoginAuth.readUsersFromDatabase();
+		LoginAuth.readTicketsFromDatabase();
 	
 	}
 			

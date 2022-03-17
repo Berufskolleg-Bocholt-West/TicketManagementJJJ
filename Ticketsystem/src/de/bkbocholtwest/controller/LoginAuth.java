@@ -168,6 +168,78 @@ public class LoginAuth {
 		}
 
 	}
+	public static void readTicketsFromDatabase() {
+		
+		Statement stm = null;
+		try {
+			stm = authCon.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ResultSet rs = null;	
+		try {
+			rs = stm.executeQuery("SELECT * FROM Tickets;");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			while(rs.next()){
+				
+				User creator = null;
+				
+				for(User u: App.users) {
+					if(u.getUserID()==(rs.getString(4))) {
+						creator = u;
+						break;
+					}
+				}
+				
+				String tickedID = rs.getString(1); 
+				String description = rs.getString(2); 
+				String title = rs.getString(3);
+				//String creatorID = rs.getString(4);
+				
+				
+				User.createdTickets.add(new TicketClass(tickedID, description, title, creator));					
+
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	public static void writeTicketsToDatabase(String ticketID, String title, String description, String creatorID) {
+		
+		Statement stm = null;
+		try {
+			stm = authCon.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ResultSet rs = null;
+		try {
+			rs = stm.executeQuery("SELECT * FROM Tickets");
+			rs.moveToInsertRow();                                 
+			rs.updateString(1, ticketID);
+			rs.updateString(2, description);
+			rs.updateString(3, title);
+			rs.updateString(4, creatorID);
+			rs.insertRow();                                         
+			rs.moveToCurrentRow();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		User.createdTickets.add(new TicketClass(ticketID, description, title, App.activeUser));
+		
+	}
 
 
 }

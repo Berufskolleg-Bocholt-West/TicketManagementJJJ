@@ -1,6 +1,9 @@
 	package de.bkbocholtwest.model;
 
 import java.util.UUID;
+
+import de.bkbocholtwest.controller.LoginAuth;
+
 import java.util.ArrayList;
 
 public class User {
@@ -25,13 +28,18 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.department = department;
-		this.userID = generateID();
+		this.userID = UserID;
 	}
 	
+	public String getUserID() {
+		return userID;
+		
+	}
 	public void Logout() {
 		App.activeUser = null;
 		createdTickets.clear();
 		pendingTickets.clear();
+		LoginAuth.readTicketsFromDatabase();
 	}
 	
 	public String toString() {
@@ -72,8 +80,7 @@ public class User {
 	}
 	
 	public void createTickets(String description, String title) {
-		createdTickets.add(new TicketClass(TicketClass.generateTicketID(), description, title));
-		//add(new TicketClass(TicketClass.generateTicketID(), "description", "title");
+		LoginAuth.writeTicketsToDatabase(TicketClass.generateTicketID(), title, description, App.activeUser.getUserID());
 	}
 
 	public boolean isAdmin() {
