@@ -79,8 +79,8 @@ public class User {
 		
 	}
 	
-	public void createTickets(String description, String title) {
-		LoginAuth.writeTicketsToDatabase(TicketClass.generateTicketID(), title, description, App.activeUser.getUserID());
+	public void createTickets(String description, String title, TicketStatus status) {
+		LoginAuth.writeTicketsToDatabase(TicketClass.generateTicketID(), title, description, status, App.activeUser.getUserID());
 	}
 
 	public boolean isAdmin() {

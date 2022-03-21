@@ -8,23 +8,23 @@ public class TicketClass {
 	private String ticketID;
 	private String description;
 	private String title;
-	String[] status = {"pending", "ongoing", "qualityAssurance", "done"};
 	private User editor;
 	private User creator;
 	private Date createdDate;
 	private CommentSection comments;
+	private TicketStatus aktuellerStatus;
 	
 	public TicketClass() {
 		
 	}
 	
 
-/*	public TicketClass(String ticketID ,String description, String title, String status[], User editor, User creator,
+	/*public TicketClass(String ticketID ,String description, String title, TicketStatus aktuellerStatus, User editor, User creator,
 			Date createdDate, CommentSection comments) {
-		this.ticketID = generateTicketID();
+		this.ticketID = ticketID;
 		this.description = description;
 		this.title = title;
-		this.status = status;
+		this.aktuellerStatus = aktuellerStatus;
 		this.editor = editor;
 		this.creator = creator;
 		this.createdDate = createdDate;
@@ -39,10 +39,11 @@ public class TicketClass {
 	}
 
 
-	public TicketClass(String ticketID, String description, String title, User creator) {
+	public TicketClass(String ticketID, String description, String title, TicketStatus aktuellerStatus, User creator) {
 	this.ticketID = ticketID;
 	this.description = description;
 	this.title = title;
+	this.aktuellerStatus = aktuellerStatus;
 	this.creator = creator;
 	}
 	
@@ -66,13 +67,6 @@ public class TicketClass {
 		this.title = title;
 	}
 
-	public String[] getStatus() {
-		return status;
-	}
-
-	public void setStatus(String[] status) {
-		this.status = status;
-	}
 
 	public User getEditor() {
 		return editor;

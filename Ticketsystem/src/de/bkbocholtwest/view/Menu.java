@@ -12,6 +12,7 @@ import de.bkbocholtwest.model.App;
 import de.bkbocholtwest.model.CommentSection;
 import de.bkbocholtwest.model.Department;
 import de.bkbocholtwest.model.TicketClass;
+import de.bkbocholtwest.model.TicketStatus;
 import de.bkbocholtwest.model.User;
 
 import java.awt.event.ActionListener;
@@ -93,9 +94,10 @@ public class Menu extends mainView {
 			}
 		});
 		frame.getContentPane().add(btnLogOut);
-		JList list = new JList(UserTickets);
+		
+		final JList<String> list = new JList<String>(UserTickets);
 		list.setBounds(36, 69, 254, 51);
-		frame.getContentPane().add(list);
+		
 		
 		JLabel lblTitle = new JLabel("Title");
 		lblTitle.setBounds(36, 145, 87, 23);
@@ -121,7 +123,8 @@ public class Menu extends mainView {
 				
 				if(!txtTitle.getText().isEmpty() && !txtDescription.getText().isEmpty()) {
 					//Tickets werden in der Datenbank erstellt und in die ArrayList createdTickets geschrieben
-					App.activeUser.createTickets(txtDescription.getText(), txtTitle.getText());
+					//TicketStatus muss noch abgefragt werden
+					App.activeUser.createTickets(txtDescription.getText(), txtTitle.getText(), TicketStatus.PENDING);
 				}
 			}
 		});
@@ -134,9 +137,11 @@ public class Menu extends mainView {
 		lblCreateTickets.setBounds(36, 120, 157, 23);
 		frame.getContentPane().add(lblCreateTickets);
 		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(289, 69, 23, 51);
-		frame.getContentPane().add(scrollBar);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(284, 69, 23, 51);
+		scrollPane.setViewportView(list);
+		list.setLayoutOrientation(JList.VERTICAL);
+		frame.getContentPane().add(scrollPane);
 
 
 	}

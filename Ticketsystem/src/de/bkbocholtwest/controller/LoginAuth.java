@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import de.bkbocholtwest.model.App;
 import de.bkbocholtwest.model.Department;
 import de.bkbocholtwest.model.TicketClass;
+import de.bkbocholtwest.model.TicketStatus;
 import de.bkbocholtwest.model.User;
 
 public class LoginAuth {
@@ -202,7 +203,7 @@ public class LoginAuth {
 				//String creatorID = rs.getString(4);
 				
 				
-				User.createdTickets.add(new TicketClass(tickedID, description, title, creator));					
+				User.createdTickets.add(new TicketClass(tickedID, description, title, TicketStatus.DONE, creator));					
 
 				}
 		} catch (SQLException e) {
@@ -212,7 +213,7 @@ public class LoginAuth {
 
 	}
 	
-	public static void writeTicketsToDatabase(String ticketID, String title, String description, String creatorID) {
+	public static void writeTicketsToDatabase(String ticketID, String title, String description, TicketStatus status, String creatorID) {
 		
 		Statement stm = null;
 		try {
@@ -237,7 +238,7 @@ public class LoginAuth {
 			e.printStackTrace();
 		}
 		
-		User.createdTickets.add(new TicketClass(ticketID, description, title, App.activeUser));
+		User.createdTickets.add(new TicketClass(ticketID, description, title, status, App.activeUser));
 		
 	}
 
