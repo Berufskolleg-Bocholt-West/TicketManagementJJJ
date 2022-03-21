@@ -64,28 +64,31 @@ public class DeviceIsLocked extends mainView{
 	
 	
 	public void clock() {
-		Date rP = mainWindow.getPRG().getPenalty();
+		Date penaltyTime = mainWindow.getPRG().getPenalty();
 		Thread tim = new Thread() {
 			public void run() {
-				long dt;
+				long timeDifference;
 				int hours;
 				int minutes;
 				int seconds;
 				try {
 					for(;;) {
-						 dt = rP.getTime()-new Date().getTime();
-						Date d=new Date(dt);
-						System.out.println(dt);
-						System.out.println(d);
-						 hours = d.getHours();
-						 minutes = d.getMinutes();
-						 seconds = d.getSeconds();
+						timeDifference = penaltyTime.getTime()-new Date().getTime();
+						 
+						seconds = (int) (timeDifference / 1000) % 60 ;
+						minutes = (int) ((timeDifference / (1000*60)) % 60);
+						hours   = (int) ((timeDifference / (1000*60*60)) % 24);
 						 
 						String timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
 						setTimer(timeString);
 						sleep(1000);
+						mainWindow.getPRG().checkPenalty();
+						if(!mainWindow.getPRG().getIsLocked()) {
+							break;
+						}
 						
 					}
+					mainWindow.goToLogin();
 				} catch(Exception e) {
 					e.printStackTrace();
 				}
