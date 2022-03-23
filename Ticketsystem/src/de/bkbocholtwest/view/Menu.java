@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.io.ObjectInputStream.GetField;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.JLabel;
@@ -35,6 +36,7 @@ public class Menu extends mainView {
 	public JFrame frame;
 	private JTextField txtTitle;
 	private JTextField txtDescription;
+	private JList<String> list;
 
 	/**
 	 * Launch the application.
@@ -56,7 +58,16 @@ public class Menu extends mainView {
 	 * Create the application.
 	 */
 	public Menu() {
+		fillList();
 		initialize();
+	}
+	
+	public void fillList() {
+		List<String> myList =new ArrayList<String>();
+		for (int index = 0; index < User.createdTickets.size(); index++) {
+	         myList.add(User.createdTickets.get(index).toString());
+	      }
+		list = new JList<String>(myList.toArray(new String[myList.size()]));
 	}
 
 	/**
@@ -68,13 +79,13 @@ public class Menu extends mainView {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		
-		String[] UserTickets = new String[User.createdTickets.size()];
+		/*String[] UserTickets = new String[User.createdTickets.size()];
 		//TicketClass[] UserTickets = new TicketClass[User.createdTickets.size()];
 		int i=0;
 		for (TicketClass ticket : User.createdTickets) {
 			UserTickets[i]=ticket.toString();
 			i++;
-		}
+		}*/
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblTickets = new JLabel("Tickets");
@@ -95,8 +106,13 @@ public class Menu extends mainView {
 		});
 		frame.getContentPane().add(btnLogOut);
 		
-		final JList<String> list = new JList<String>(UserTickets);
-		list.setBounds(36, 69, 254, 51);
+		/*List<String> myList =new ArrayList<String>();
+		for (int index = 0; index < User.createdTickets.size(); index++) {
+	         myList.add(User.createdTickets.get(index).toString());
+	      }
+		JList<String> list = new JList<String>(myList.toArray(new String[myList.size()]));*/
+		//final JList<String> list = new JList<String>(UserTickets);
+		//list.setBounds(36, 69, 254, 51);
 		
 		
 		JLabel lblTitle = new JLabel("Title");
@@ -138,8 +154,9 @@ public class Menu extends mainView {
 		frame.getContentPane().add(lblCreateTickets);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(284, 69, 23, 51);
+		scrollPane.setBounds(284, 69, 90, 100);
 		scrollPane.setViewportView(list);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		list.setLayoutOrientation(JList.VERTICAL);
 		frame.getContentPane().add(scrollPane);
 
