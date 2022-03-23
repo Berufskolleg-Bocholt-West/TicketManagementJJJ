@@ -201,9 +201,11 @@ public class LoginAuth {
 				String description = rs.getString(2); 
 				String title = rs.getString(3);
 				//String creatorID = rs.getString(4);
+				String ticketStatus = rs.getString(5);
+			
+				TicketStatus status = TicketStatus.valueOf(ticketStatus);
 				
-				
-				User.createdTickets.add(new TicketClass(tickedID, description, title, TicketStatus.DONE, creator));					
+				User.createdTickets.add(new TicketClass(tickedID, description, title, status, creator));					
 
 				}
 		} catch (SQLException e) {
@@ -230,6 +232,7 @@ public class LoginAuth {
 			rs.updateString(2, description);
 			rs.updateString(3, title);
 			rs.updateString(4, creatorID);
+			rs.updateString(5, status.toString());
 			rs.insertRow();                                         
 			rs.moveToCurrentRow();
 			
