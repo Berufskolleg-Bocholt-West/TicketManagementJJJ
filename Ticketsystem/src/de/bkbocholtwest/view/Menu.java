@@ -67,7 +67,11 @@ public class Menu extends mainView {
 		for (int index = 0; index < User.createdTickets.size(); index++) {
 	         myList.add(User.createdTickets.get(index).toString());
 	      }
-		list = new JList<String>(myList.toArray(new String[myList.size()]));
+		String[] stringArray = myList.toArray(new String[0]);
+		System.out.println(stringArray);
+		list = new JList<String>(stringArray);
+		//list = new JList<String>(myList.toArray(new String[myList.size()]));
+	
 	}
 
 	/**
