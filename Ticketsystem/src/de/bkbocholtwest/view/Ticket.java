@@ -31,6 +31,12 @@ import java.awt.ScrollPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
+
+import de.bkbocholtwest.controller.LoginAuth;
+import de.bkbocholtwest.model.App;
+import de.bkbocholtwest.model.TicketClass;
+import de.bkbocholtwest.model.User;
+
 import java.awt.Color;
 import javax.swing.JScrollPane;
 
@@ -38,13 +44,18 @@ public class Ticket {
 
 	private JFrame frame;
 	private JTextField txtWriteAComment;
-	private JTextField txtWriteATitle;
+	private JTextField txtTitle;
 	private JTextField txtDescription;
+	private JTextField textStatus;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		//temporary
+		App a = new App();
+		//
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -72,6 +83,16 @@ public class Ticket {
 		frame.setBounds(100, 100, 508, 687);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		
+		TicketClass[] tickets = new TicketClass[User.createdTickets.size()];
+		int i=0;
+		for (TicketClass ticket : User.createdTickets) {
+			tickets[i]=ticket;
+			i++;
+		}
+		
+		
 		
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(466, 22, 17, 409);
@@ -127,11 +148,11 @@ public class Ticket {
 		
 		JLabel lblDescription = new JLabel("Description");
 		lblDescription.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblDescription.setBounds(107, 11, 64, 14);
+		lblDescription.setBounds(107, 11, 77, 14);
 		panelDescription.add(lblDescription);
 		
 		txtDescription = new JTextField();
-		txtDescription.setText("Write a description...");
+		txtDescription.setText(tickets[0].getDescription());
 		txtDescription.setBounds(10, 36, 267, 262);
 		panelDescription.add(txtDescription);
 		txtDescription.setColumns(10);
@@ -142,12 +163,12 @@ public class Ticket {
 		frame.getContentPane().add(titlePanel);
 		titlePanel.setLayout(null);
 		
-		txtWriteATitle = new JTextField();
-		txtWriteATitle.setFont(new Font("Tahoma", Font.BOLD, 14));
-		txtWriteATitle.setBounds(10, 0, 351, 39);
-		titlePanel.add(txtWriteATitle);
-		txtWriteATitle.setText("Write a title...");
-		txtWriteATitle.setColumns(10);
+		txtTitle = new JTextField();
+		txtTitle.setFont(new Font("Tahoma", Font.BOLD, 14));
+		txtTitle.setBounds(10, 0, 351, 39);
+		titlePanel.add(txtTitle);
+		txtTitle.setText(tickets[0].getTitle());
+		txtTitle.setColumns(10);
 		
 		JPanel panelEditors = new JPanel();
 		panelEditors.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
@@ -160,9 +181,18 @@ public class Ticket {
 		lblEditors.setFont(new Font("Tahoma", Font.BOLD, 11));
 		panelEditors.add(lblEditors);
 		
+		JLabel lblEditor = new JLabel("");
+		lblEditor.setBounds(10, 32, 103, 47);
+		panelEditors.add(lblEditor);
+		
+		//panelEditors.setToolTipText(tickets[0].getEditor().getUsername());
+		
 		JPanel panelStatus = new JPanel();
 		panelStatus.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
-		panelStatus.setBounds(313, 207, 123, 117);
+		panelStatus.setBounds(317, 213, 123, 117);
+		
+		panelStatus.setToolTipText(tickets[0].getAktuellerStatus().toString());
+		
 		frame.getContentPane().add(panelStatus);
 		panelStatus.setLayout(null);
 		
@@ -170,6 +200,13 @@ public class Ticket {
 		lblStatus.setBounds(43, 7, 37, 14);
 		lblStatus.setFont(new Font("Tahoma", Font.BOLD, 11));
 		panelStatus.add(lblStatus);
+		
+		textStatus = new JTextField();
+		textStatus.setBounds(10, 32, 96, 74);
+		panelStatus.add(textStatus);
+		textStatus.setColumns(10);
+		textStatus.setText(tickets[0].getAktuellerStatus().toString());
+		
 		
 		JPanel panelDeadline = new JPanel();
 		panelDeadline.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
@@ -181,6 +218,11 @@ public class Ticket {
 		lblDeadline.setBounds(37, 7, 49, 14);
 		lblDeadline.setFont(new Font("Tahoma", Font.BOLD, 11));
 		panelDeadline.add(lblDeadline);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(10, 24, 103, 55);
+		panelDeadline.add(textField_1);
+		textField_1.setColumns(10);
 
 	}
 }

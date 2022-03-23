@@ -50,6 +50,28 @@ public class TicketClass {
 	public String toString() {
 		return title+": "+description;
 	}
+	
+	
+
+	public String getTicketID() {
+		return ticketID;
+	}
+
+
+	public void setTicketID(String ticketID) {
+		this.ticketID = ticketID;
+	}
+
+
+	public TicketStatus getAktuellerStatus() {
+		return aktuellerStatus;
+	}
+
+
+	public void setAktuellerStatus(TicketStatus aktuellerStatus) {
+		this.aktuellerStatus = aktuellerStatus;
+	}
+
 
 	public String getDescription() {
 		return description;
